@@ -7,6 +7,10 @@ const H1 = (props: { children: React.ReactNode }) => <h1 style={{ fontSize: '2.7
 const H2 = (props: { children: React.ReactNode, style?: any }) => <h2 style={{ fontSize: '1.75em', maxWidth: "600px", margin: '1em 0', fontFamily: "nudicamedium", color: "var(--gray8)", ...props.style }}>{props.children}</h2>;
 const P = (props: { children: React.ReactNode }) => <p style={{ maxWidth: "500px" }}>{props.children}</p>;
 
+const openSubscriptionForm = () => {
+    window.open("http://eepurl.com/i6WBsQ", "_blank");
+}
+
 const PinsAndCurvesLandingPage: React.FC = () => {
     return (
         <div style={{
@@ -68,12 +72,12 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                     alignItems: "center",
                     gap: "20px",
                 }}>
-                    <a href="#overview" style={{ color: "var(--gray7)" }}>Resources</a>
-                    <a href="#overview" style={{ color: "var(--gray7)" }}>About</a>
-                    <a href="#demo" style={{ color: "var(--gray7)" }}>How To Support</a>
-                    <a href="#demo" style={{ color: "var(--gray7)" }}>Get In Touch</a>
-
-                <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'></Button>
+                    <a href="https://pumped-feather-7af.notion.site/Pins-And-Curves-1695fdbd72d380a78b03e586c2802150?pvs=4" style={{ color: "var(--gray7)" }}>Resources</a>
+                    <a href="https://pumped-feather-7af.notion.site/About-1695fdbd72d380f4b03dd67972d6abae?pvs=4" style={{ color: "var(--gray7)" }}>About</a>
+                <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
+                    onClick={openSubscriptionForm}
+                
+                ></Button>
 
 
                 </div>
@@ -118,7 +122,9 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                     <P>
                         Pins and Curves is a signal-based animation editor that seamlessly blends manual keyframing with procedural elements. Stay agile, iterate faster, and retain complete creative control.
                     </P>
-                    <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'></Button>
+                    <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
+                        onClick={openSubscriptionForm}
+                    ></Button>
 
                 </header>
 
@@ -283,7 +289,9 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                     <H2>Become a tester</H2>
                     <P>Join the early access program and let us know how we can make Pins and Curves work for you.</P>
                     <br></br>
-                    <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'></Button>
+                    <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
+                        onClick={openSubscriptionForm}
+                    ></Button>
                 </section>
 
                 <hr style={{
