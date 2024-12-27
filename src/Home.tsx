@@ -1,77 +1,341 @@
-import React from "react";
-import { Button, SimpleCommittedTextInput } from "@mtrifonov-design/pinsandcurves-specialuicomponents"
-import { useNavigate } from 'react-router';
+import React from 'react';
+import { Button } from '@mtrifonov-design/pinsandcurves-specialuicomponents';
 
-function Home() {
-    const navigate = useNavigate();
-    const [serverUrl, setServerUrl] = React.useState("http://localhost:3000");
-  return (
-    <div style={{
-        backgroundColor: "var(--gray1)",
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-    }}>
+
+
+const H1 = (props: { children: React.ReactNode }) => <h1 style={{ fontSize: '2.75em', margin: '1em 0', fontFamily: "nudicamedium", color: "var(--gray8)" }}>{props.children}</h1>;
+const H2 = (props: { children: React.ReactNode, style?: any }) => <h2 style={{ fontSize: '1.75em', maxWidth: "600px", margin: '1em 0', fontFamily: "nudicamedium", color: "var(--gray8)", ...props.style }}>{props.children}</h2>;
+const P = (props: { children: React.ReactNode }) => <p style={{ maxWidth: "500px" }}>{props.children}</p>;
+
+const PinsAndCurvesLandingPage: React.FC = () => {
+    return (
         <div style={{
-            backgroundColor: "var(--gray2)",
-            borderRadius: "var(--borderRadiusSmall)",
-            padding: "45px",
+            fontFamily: "Roboto, sans-serif",
+            fontSize: "1.2rem",
+            backgroundColor: "var(--gray1)",
+            color: "var(--gray7)",
+            padding: "50px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
-            width: "600px",
-            fontSize: "16px",
+            overflowY: "auto",
+            height: "100vh",
         }}>
-            <img src="/media/LOGOTEXT.svg" alt="Pins and Curves" style={{
-                width: "100%",
-                marginBottom: "20px"
-            }}/>
-            <br></br>
             <div style={{
-                color: "var(--gray6)"
-            }}> Welcome to Pins and Curves. Enter your server url to launch the editor.</div>
-            <br></br>
-            <div style={{display: "flex",
+                position: "fixed",
+                top: "0",
+                left: "0",
+                width: "100%",
+                height: "70px",
+                // borderBottom: "1px solid var(--gray3)",
+                color: "var(--gray7)",
+                zIndex: 100,
+            }}>
+            <div style={{
+                position: "absolute",
+                top: "0",
+                left: "0",
+                width: "100%",
+                height: "100%",
+                display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                gap: "10px",
-                color: "var(--gray6)",
-
+                padding: "0 30px",
+                zIndex: 101,
             }}>
-            Server url:
-            <SimpleCommittedTextInput initialValue={serverUrl}
-                isValid={(serverUrl: string) => {
-                    const trimmedUrl = serverUrl.trim();
-                    const urlPattern = /^(https?:\/\/)/;
-                    if (!urlPattern.test(trimmedUrl)) {
-                        return false;
-                    }
-                    return true;
-                }}
-                onCommit={setServerUrl}
-            
-            
-            />
-            <Button text="launch editor" 
-                iconName="rocket_launch"
-                onClick={() => {
-                // Encode the URL for safe use in the route
-                const encodedUrl = encodeURIComponent(serverUrl);
-                navigate(`run/${encodedUrl}`);
+                <div style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: "8px",
+                }}>
+                <img src="/media/LOGO.svg" alt="Pins and Curves" style={{
+                    height: "40px",
+                }} />
+                <strong style={{
+                    backgroundColor: "var(--danger)",
+                    padding: "5px",
+                    borderRadius: "var(--borderRadiusSmall)",
+                    color: "var(--gray1)",
+                    fontSize: "0.5em",
+                }}>BETA</strong>
+                </div>
 
-            }} />
+                <div style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: "20px",
+                }}>
+                    <a href="#overview" style={{ color: "var(--gray7)" }}>Resources</a>
+                    <a href="#overview" style={{ color: "var(--gray7)" }}>About</a>
+                    <a href="#demo" style={{ color: "var(--gray7)" }}>How To Support</a>
+                    <a href="#demo" style={{ color: "var(--gray7)" }}>Get In Touch</a>
+
+                <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'></Button>
+
+
+                </div>
+
+
+            </div>
+            <div style={{
+                position: "absolute",
+                top: "0",
+                left: "0",
+                width: "100%",
+                height: "100%",
+                backgroundColor: "var(--gray1)",
+                opacity: 0.75,
+            }}></div>
+
+            </div>
+            <br></br>
+
+            <div style={{
+                maxWidth: "1600px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+            }}>
+                {/* Hero Section */}
+                <header id="hero" style={{
+                    textAlign: 'center', padding: '50px 20px',
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "20px",
+
+                }}>
+                    <img src="/media/screenshot3.png" alt="Overview 1" style={{
+                        width: '1000px',
+                        filter: "drop-shadow(0px 0px 30px rgba(0,0,0,0.7))", borderRadius: "var(--borderRadiusSmall)"
+
+                    }} />
+                    <H1>Pins and Curves:<br></br> Motion Design, Reimagined</H1>
+                    <P>
+                        Pins and Curves is a signal-based animation editor that seamlessly blends manual keyframing with procedural elements. Stay agile, iterate faster, and retain complete creative control.
+                    </P>
+                    <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'></Button>
+
+                </header>
+
+                {/* Overview Section */}
+                <section id="overview" style={{
+                    padding: '0px 20px',
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "50px",
+                }}>
+
+                    <hr style={{
+                        width: "100%",
+                        border: "none",
+                        borderBottom: "1px solid var(--gray3)",
+                        margin: "50px 0"
+                    }}></hr>
+                    <div style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}>
+                        <H2>Signals: The Building Blocks of Motion</H2>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            gap: "40px",
+                            marginBottom: "100px"
+
+                        }}>
+                            
+                            <P>
+                                <strong>WHAT ARE SIGNALS?</strong><br></br>
+                                Signals are simply values that change over time.
+                                Create Signals by placing Pins (manual keyframes) and shaping the curves between them using expressions or presets.
+                                Apply signals to your object’s visual properties to bring them to life.
+                                <br></br><br></br>
+                            </P>
+
+                            <img src="/media/singlesignal.png" alt="Overview 1" style={{ width: '1000px', }} />
+                        </div>
+
+                        <div style={{
+                            marginBottom: "100px",
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            gap: "40px",
+                        }}>
+
+
+                            <img src="/media/combined.png" alt="Overview 1" style={{ width: '1000px', }} />
+                            <P>
+                                <strong>COMBINING SIGNALS</strong><br></br>
+                                Layer and combine simple Signals using operations like addition or multiplication to create intricate, dynamic motion. Need to make a change? Just tweak an individual Signal, and all related animations adapt automatically.
+                                <br></br><br></br>
+                                <br></br><br></br>
+                            </P>
+
+                        </div>
+
+                    </div>
+
+                    <hr style={{
+                        width: "100%",
+                        border: "none",
+                        borderBottom: "1px solid var(--gray3)",
+                    }}></hr>
+                    <div style={{
+                        marginBottom: "100px",
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: "80px",
+                    }}>
+
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            gap: "40px",
+
+                        }}>
+                            <img src="/media/JavaScript-logo.png" alt="JavaScript Logo" style={{ width: "100px" }} />
+                            <img src="/media/HTML5_Logo.svg" alt="HTML Logo" style={{ width: "100px" }} />
+                        </div>
+                        <div >
+                            <H2>Open standards, endless possibilities</H2>
+                            <P>
+                                Don’t let proprietary file formats limit what you can make. Design scenes with web-native formats like HTML and
+                                SVG. Start by importing SVGs from tools like Illustrator—no coding required. For those who want more, extend
+                                functionality with JavaScript to create intricate, rigged setups.
+                            </P>
+
+                        </div>
+
+
+                    </div>
+                                        <div style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "100px",
+                        padding: "50px",
+                        paddingBottom: "100px",
+                        width: "100%",
+                        backgroundColor: "var(--gray2)",
+                        borderRadius: "var(--borderRadiusSmall)",
+                        marginBottom: "100px"
+                    }}>
+
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: "500px",
+
+                        }}>
+                        <span className="materialSymbols" style={{ fontSize: "50px", marginBottom: "20px" }}>speed</span>
+                        <strong style={{ color: "white", textAlign: "center" }}>STAY AGILE, ITERATE FASTER</strong><br></br>
+                        With pins and curves, your workflow keeps up with your ideas, no matter how fast they evolve. Automate repetitive tasks, experiment freely, and refine your animations without starting from scratch.
+                    </div>
+                    <div style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: "500px",
+                    }}>
+                        <span className="materialSymbols" style={{ fontSize: "50px", marginBottom: "20px" }}>code</span>
+                        <strong style={{ color: "white", textAlign: "center" }}>CUSTOMIZE, AUTOMATE AND EXTEND WITH EASE</strong><br></br>
+                        Pins and Curves integrates seamlessly with web technologies, empowering you to tailor your project to your vision—whether through simple tweaks or powerful scripting.
+                        
+                    </div>
+                    </div>
+                </section>
+
+                {/* Demonstration Section */}
+                <section id="demo" style={{ textAlign: 'center', padding: '50px 20px',
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+            
+                }}>
+                    <H2>See it in Action</H2>
+                    <P>Watch how Pins and Curves simplifies animation with Signals, modular workflows, and seamless integration with web standards.</P>
+                    <br></br>
+                    <video style={{width: "100%"}} controls>
+                        <source src="demo-video.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </section>
+
+                {/* Call-to-Action Section */}
+                <section id="cta" style={{ textAlign: 'center', padding: '50px 20px',
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                }}>
+                    <H2>Become a tester</H2>
+                    <P>Join the early access program and let us know how we can make Pins and Curves work for you.</P>
+                    <br></br>
+                    <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'></Button>
+                </section>
+
+                <hr style={{
+                        width: "100%",
+                        border: "none",
+                        borderBottom: "1px solid var(--gray3)",
+                        margin: "50px 0"
+                    }}></hr>
+
+                {/* Values Section */}
+                <section id="values" style={{
+                    padding: '50px',
+                    borderRadius: "var(--borderRadiusSmall)",
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "flex-start"
+                }}>
+
+
+                    <div style={{
+                        padding: "50px",
+                        marginLeft: "50px",
+                    }}>
+                    <strong>OUR MISSION</strong>
+                    <H2>Make Animation Smarter</H2>
+                    <P>
+                        Animation is inherently complex, but your tools shouldn’t make it harder. Pins and Curves is built on simple ideas that are easy to get started with, but are powerful enough to meet the complexity you need in your projects. By integrating with web technologies, it gives you the flexibility to customize and extend your animations effortlessly, leveraging existing javascript libraries. Whether you’re a designer, a developer, or somewhere in between, our mission is to help you create without limits.
+                    </P>
+                    </div>
+
+
+
+
+
+                </section>
+
+
+
+                {/* Vision Section */}
+                <section id="vision" style={{ padding: '50px 20px' }}>
+
+                </section>
+
             </div>
 
-
-
         </div>
+    );
+};
 
-    </div>
-  );
-}
-
-export default Home;
+export default PinsAndCurvesLandingPage;

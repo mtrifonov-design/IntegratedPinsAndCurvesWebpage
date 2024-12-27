@@ -10,15 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mtrifonov-design/pinsandcurves-external": "^0.0.205",
-    "@mtrifonov-design/pinsandcurves-specialuicomponents": "^0.0.124",
+    "@mtrifonov-design/pinsandcurves-external": "^0.0.212",
+    "@mtrifonov-design/pinsandcurves-specialuicomponents": "^0.0.144",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router": "^7.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
-    "@mtrifonov-design/pinsandcurves-viewlayer": "0.0.7",
+    "@mtrifonov-design/pinsandcurves-viewlayer": "0.0.8",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
