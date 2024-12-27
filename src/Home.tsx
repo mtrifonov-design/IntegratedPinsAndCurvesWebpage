@@ -72,8 +72,13 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                     alignItems: "center",
                     gap: "20px",
                 }}>
+
+                    <a href="https://discord.gg/TU8G3J5v" style={{ color: "var(--gray7)" }}>Discord</a>
+                    
                     <a href="https://pumped-feather-7af.notion.site/Pins-And-Curves-1695fdbd72d380a78b03e586c2802150?pvs=4" style={{ color: "var(--gray7)" }}>Resources</a>
                     <a href="https://pumped-feather-7af.notion.site/About-1695fdbd72d380f4b03dd67972d6abae?pvs=4" style={{ color: "var(--gray7)" }}>About</a>
+                
+                
                 <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
                     onClick={openSubscriptionForm}
                 
