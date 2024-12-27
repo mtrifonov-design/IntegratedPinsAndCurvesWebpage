@@ -270,12 +270,7 @@ const PinsAndCurvesLandingPage: React.FC = () => {
             
                 }}>
                     <H2>See it in Action</H2>
-                    <P>Watch how Pins and Curves simplifies animation with Signals, modular workflows, and seamless integration with web standards.</P>
-                    <br></br>
-                    <video style={{width: "100%"}} controls>
-                        <source src="demo-video.mp4" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
+                    <iframe width="1440" height="810" src="https://www.youtube.com/embed/fHEpgb0IoYU?si=Ll6xT6PDo58MoO4A" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={true}></iframe>
                 </section>
 
                 {/* Call-to-Action Section */}
