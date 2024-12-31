@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@mtrifonov-design/pinsandcurves-specialuicomponents';
-import { Navigate, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 
 
 const H1 = (props: { children: React.ReactNode }) => <h1 style={{ fontSize: '2.75em', margin: '0.75em 0', fontFamily: "nudicamedium", color: "var(--gray8)" }}>{props.children}</h1>;
