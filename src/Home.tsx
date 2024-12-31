@@ -3,19 +3,54 @@ import { Button } from '@mtrifonov-design/pinsandcurves-specialuicomponents';
 
 
 
-const H1 = (props: { children: React.ReactNode }) => <h1 style={{ fontSize: '2.75em', margin: '1em 0', fontFamily: "nudicamedium", color: "var(--gray8)" }}>{props.children}</h1>;
+const H1 = (props: { children: React.ReactNode }) => <h1 style={{ fontSize: '2.75em', margin: '0.75em 0', fontFamily: "nudicamedium", color: "var(--gray8)" }}>{props.children}</h1>;
 const H2 = (props: { children: React.ReactNode, style?: any }) => <h2 style={{ fontSize: '1.75em', maxWidth: "600px", margin: '1em 0', fontFamily: "nudicamedium", color: "var(--gray8)", ...props.style }}>{props.children}</h2>;
-const P = (props: { children: React.ReactNode }) => <p style={{ maxWidth: "500px" }}>{props.children}</p>;
+const P = (props: { children: React.ReactNode }) => <p style={{ maxWidth: "500px", margin: "0" }}>{props.children}</p>;
+
+const discordUrl = "https://discord.gg/TU8G3J5v";
+const aboutUrl = "https://pumped-feather-7af.notion.site/About-1695fdbd72d380f4b03dd67972d6abae?pvs=4"
+const resourcesUrl = "https://pumped-feather-7af.notion.site/Pins-And-Curves-1695fdbd72d380a78b03e586c2802150?pvs=4"
+
+
+const Menu = () => {
+    return (
+
+            <div style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                height: "calc(100vh - 70px)",
+                gap: "40px",
+                justifyContent: "center",
+            }}>
+                <a href={discordUrl} style={{ color: "var(--gray7)" }}>Discord</a>
+                <a href={resourcesUrl} style={{ color: "var(--gray7)" }}>Resources</a>
+                <a href={aboutUrl} style={{ color: "var(--gray7)" }}>About</a>
+                <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
+                    onClick={openSubscriptionForm}
+                ></Button>
+            </div>
+    );
+}
+
 
 const openSubscriptionForm = () => {
     window.open("http://eepurl.com/i6WBsQ", "_blank");
 }
 
 const PinsAndCurvesLandingPage: React.FC = () => {
+
+    const isMobile = window.innerWidth < 800;
+    const under2000 = window.innerWidth < 2000;
+
+    const [menuOpen, setMenuOpen] = React.useState(false);
+
+
     return (
+        
         <div style={{
             fontFamily: "Roboto, sans-serif",
-            fontSize: "1.2rem",
+            fontSize: isMobile? "1rem" : "1.2rem",
             backgroundColor: "var(--gray1)",
             color: "var(--gray7)",
             padding: "50px",
@@ -72,23 +107,31 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                     alignItems: "center",
                     gap: "20px",
                 }}>
-
-                    <a href="https://discord.gg/TU8G3J5v" style={{ color: "var(--gray7)" }}>Discord</a>
+                    {isMobile ?
+                    <span 
+                        onClick={() => setMenuOpen(!menuOpen)}
                     
-                    <a href="https://pumped-feather-7af.notion.site/Pins-And-Curves-1695fdbd72d380a78b03e586c2802150?pvs=4" style={{ color: "var(--gray7)" }}>Resources</a>
-                    <a href="https://pumped-feather-7af.notion.site/About-1695fdbd72d380f4b03dd67972d6abae?pvs=4" style={{ color: "var(--gray7)" }}>About</a>
-                
-                
-                <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
+                    style={{fontSize: "30px"}} className="materialSymbols">{menuOpen ? "close" : "menu"}</span>:
+                    (<>
+                    <a href={discordUrl} style={{ color: "var(--gray7)" }}>Discord</a>                    
+                    <a href={resourcesUrl} style={{ color: "var(--gray7)" }}>Resources</a>
+                    <a href={aboutUrl} style={{ color: "var(--gray7)" }}>About</a>
+                    <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
                     onClick={openSubscriptionForm}
+                    ></Button>
+                    
+                    </>
+
+                    )
                 
-                ></Button>
+                    }
 
 
                 </div>
 
 
             </div>
+
             <div style={{
                 position: "absolute",
                 top: "0",
@@ -102,8 +145,11 @@ const PinsAndCurvesLandingPage: React.FC = () => {
             </div>
             <br></br>
 
-            <div style={{
-                maxWidth: "1600px",
+            {menuOpen ? <Menu /> :
+                <>
+
+<div style={{
+                maxWidth: isMobile ?  "100vw" : "1600px",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -119,7 +165,7 @@ const PinsAndCurvesLandingPage: React.FC = () => {
 
                 }}>
                     <img src="/media/screenshot3.png" alt="Overview 1" style={{
-                        width: '1000px',
+                        width: `clamp(100px, ${under2000 ? "600px" : "1000px"}, calc(100vw - 100px))`,
                         filter: "drop-shadow(0px 0px 30px rgba(0,0,0,0.7))", borderRadius: "var(--borderRadiusSmall)"
 
                     }} />
@@ -134,20 +180,22 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                 </header>
 
                 {/* Overview Section */}
-                <section id="overview" style={{
-                    padding: '0px 20px',
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: "50px",
-                }}>
-
-                    <hr style={{
+                <hr style={{
                         width: "100%",
                         border: "none",
                         borderBottom: "1px solid var(--gray3)",
                         margin: "50px 0"
                     }}></hr>
+                <section id="overview" style={{
+                    padding: '0px 20px',
+                    display: isMobile ? "none" : "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "50px",
+                    width: isMobile ? "100vw" : undefined,
+                }}>
+
+
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
@@ -160,7 +208,9 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                             flexDirection: "row",
                             alignItems: "center",
                             gap: "40px",
-                            marginBottom: "100px"
+                            marginBottom: "100px",
+                            flexWrap: "wrap",
+                            marginTop: "50px"
 
                         }}>
                             
@@ -172,7 +222,7 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                                 <br></br><br></br>
                             </P>
 
-                            <img src="/media/singlesignal.png" alt="Overview 1" style={{ width: '1000px', }} />
+                            <img src="/media/singlesignal.png" alt="Overview 1" style={{ width: isMobile ? "calc(100vw - 100px)" : "1000px", }} />
                         </div>
 
                         <div style={{
@@ -181,10 +231,9 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                             flexDirection: "row",
                             alignItems: "center",
                             gap: "40px",
+                            flexWrap: "wrap",
                         }}>
-
-
-                            <img src="/media/combined.png" alt="Overview 1" style={{ width: '1000px', }} />
+                            <img src="/media/combined.png" alt="Overview 1" style={{ width: isMobile ? "calc(100vw - 100px)" : "1000px", }} />
                             <P>
                                 <strong>COMBINING SIGNALS</strong><br></br>
                                 Layer and combine simple Signals using operations like addition or multiplication to create intricate, dynamic motion. Need to make a change? Just tweak an individual Signal, and all related animations adapt automatically.
@@ -254,23 +303,31 @@ const PinsAndCurvesLandingPage: React.FC = () => {
 
                         }}>
                         <span className="materialSymbols" style={{ fontSize: "50px", marginBottom: "20px" }}>speed</span>
-                        <strong style={{ color: "white", textAlign: "center" }}>STAY AGILE, ITERATE FASTER</strong><br></br>
+                        <p>
+                        <strong style={{ color: "white", textAlign: "center" }}>STAY AGILE, ITERATE FASTER</strong><br></br><br></br>
                         With pins and curves, your workflow keeps up with your ideas, no matter how fast they evolve. Automate repetitive tasks, experiment freely, and refine your animations without starting from scratch.
+                        </p>
                     </div>
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
                         justifyContent: "center",
-                        width: "500px",
+                        maxWidth: "500px",
                     }}>
                         <span className="materialSymbols" style={{ fontSize: "50px", marginBottom: "20px" }}>code</span>
-                        <strong style={{ color: "white", textAlign: "center" }}>CUSTOMIZE, AUTOMATE AND EXTEND WITH EASE</strong><br></br>
-                        Pins and Curves integrates seamlessly with web technologies, empowering you to tailor your project to your vision—whether through simple tweaks or powerful scripting.
+                        <p>
+                            <strong style={{ color: "white", textAlign: "center" }}>CUSTOMIZE, AUTOMATE AND EXTEND WITH EASE</strong><br></br><br></br>
+                            Pins and Curves integrates seamlessly with web technologies, empowering you to tailor your project to your vision—whether through simple tweaks or powerful scripting.
                         
+
+                        </p>
+
                     </div>
                     </div>
                 </section>
+
+
 
                 {/* Demonstration Section */}
                 <section id="demo" style={{ textAlign: 'center', padding: '50px 20px',
@@ -281,10 +338,17 @@ const PinsAndCurvesLandingPage: React.FC = () => {
             
                 }}>
                     <H2>See it in Action</H2>
-                    <iframe width="1440" height="810" src="https://www.youtube.com/embed/fHEpgb0IoYU?si=Ll6xT6PDo58MoO4A" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={true}></iframe>
+                    <iframe 
+                    style={{
+                        width: isMobile ? "100vw" : undefined,
+                        height: isMobile ? "calc(100vw * 0.5625)" : undefined,
+                    }}
+                    width={isMobile ? undefined : "1440"} height={isMobile ? undefined : "810"} src="https://www.youtube.com/embed/fHEpgb0IoYU?si=Ll6xT6PDo58MoO4A" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={true}></iframe>
                 </section>
 
                 {/* Call-to-Action Section */}
+
+
                 <section id="cta" style={{ textAlign: 'center', padding: '50px 20px',
                     display: "flex",
                     flexDirection: "column",
@@ -292,11 +356,17 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                     justifyContent: "center",
                 }}>
                     <H2>Become a tester</H2>
+
                     <P>Join the early access program and let us know how we can make Pins and Curves work for you.</P>
                     <br></br>
                     <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
                         onClick={openSubscriptionForm}
                     ></Button>
+                    <div style={{display: isMobile ? "flex" : "none", flexDirection: "row", gap: "15px"}}>
+                    <a href={discordUrl} style={{ color: "var(--gray7)",marginTop: "15px" }}>Discord</a>
+                    <a href={resourcesUrl} style={{ color: "var(--gray7)", marginTop: "15px" }}>Resources</a>
+                    <a href={aboutUrl} style={{ color: "var(--gray7)", marginTop: "15px" }}>About</a>
+                    </div>
                 </section>
 
                 <hr style={{
@@ -317,8 +387,6 @@ const PinsAndCurvesLandingPage: React.FC = () => {
 
 
                     <div style={{
-                        padding: "50px",
-                        marginLeft: "50px",
                     }}>
                     <strong>OUR MISSION</strong>
                     <H2>Make Animation Smarter</H2>
@@ -333,14 +401,39 @@ const PinsAndCurvesLandingPage: React.FC = () => {
 
                 </section>
 
+                <hr style={{
+                        width: "100%",
+                        border: "none",
+                        borderBottom: "1px solid var(--gray3)",
+                        margin: "50px 0"
+                    }}></hr>
+
 
 
                 {/* Vision Section */}
-                <section id="vision" style={{ padding: '50px 20px' }}>
+                <section id="end" style={{ padding: '50px 20px', display: "flex",
+            
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "20px",
+                }}>
 
+                    Pins And Curves, 2024 ©
+                    <a href={discordUrl} style={{ color: "var(--gray7)" }}>Discord</a>
+                    
+                    <a href={aboutUrl} style={{ color: "var(--gray7)" }}>Resources</a>
+                    <a href={resourcesUrl} style={{ color: "var(--gray7)" }}>About</a>
+                
                 </section>
 
             </div>
+
+                </>
+            
+            }
+
+            
 
         </div>
     );
