@@ -450,6 +450,8 @@ Pins and Curves is free to use, with a forever-free tier that ensures everyone c
                     alignItems: "center",
                     justifyContent: "center",
                     gap: "20px",
+                    maxWidth: "100vw",
+                    flexWrap: "wrap",
                 }}>
 
                     Pins And Curves, 2024 ©
