@@ -55,6 +55,7 @@ const PinsAndCurvesLandingPage: React.FC = () => {
             backgroundColor: "var(--gray1)",
             color: "var(--gray7)",
             paddingTop: "50px",
+            paddingBottom: "50px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
