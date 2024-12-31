@@ -224,7 +224,8 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                                 <br></br><br></br>
                             </P>
 
-                            <img src="/media/singlesignal.png" alt="Overview 1" style={{ width: isMobile ? "calc(100vw - 100px)" : "1000px", }} />
+                            <img src="/media/singlesignal.png" alt="Overview 1" 
+                            style={{ width: isMobile ? "calc(100vw - 100px)" : under2000 ? "700px" : "1000px", }} />
                         </div>
 
                         <div style={{
@@ -235,7 +236,8 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                             gap: "40px",
                             flexWrap: "wrap",
                         }}>
-                            <img src="/media/combined.png" alt="Overview 1" style={{ width: isMobile ? "calc(100vw - 100px)" : "1000px", }} />
+                            <img src="/media/combined.png" alt="Overview 1" 
+                            style={{ width: isMobile ? "calc(100vw - 100px)" : under2000 ? "700px" : "1000px", }}></img>
                             <P>
                                 <strong>COMBINING SIGNALS</strong><br></br>
                                 Layer and combine simple Signals using operations like addition or multiplication to create intricate, dynamic motion. Need to make a change? Just tweak an individual Signal, and all related animations adapt automatically.
