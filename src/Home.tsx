@@ -8,8 +8,8 @@ const H2 = (props: { children: React.ReactNode, style?: any }) => <h2 style={{ f
 const P = (props: { children: React.ReactNode }) => <p style={{ maxWidth: "500px", margin: "0" }}>{props.children}</p>;
 
 const discordUrl = "https://discord.gg/TU8G3J5v";
-const aboutUrl = "https://pumped-feather-7af.notion.site/About-1695fdbd72d380f4b03dd67972d6abae?pvs=4"
-const resourcesUrl = "https://pumped-feather-7af.notion.site/Pins-And-Curves-1695fdbd72d380a78b03e586c2802150?pvs=4"
+const aboutUrl = "https://pinsandcurves.notion.site/About-1695fdbd72d380f4b03dd67972d6abae?pvs=4"
+const resourcesUrl = "https://pinsandcurves.notion.site/Pins-And-Curves-1695fdbd72d380a78b03e586c2802150?pvs=4"
 
 
 const Menu = () => {
