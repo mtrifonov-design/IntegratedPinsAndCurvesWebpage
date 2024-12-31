@@ -54,12 +54,14 @@ const PinsAndCurvesLandingPage: React.FC = () => {
             fontSize: isMobile? "1rem" : "1.2rem",
             backgroundColor: "var(--gray1)",
             color: "var(--gray7)",
-            padding: "50px",
+            paddingTop: "50px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             overflowY: "auto",
+            overflowX: "hidden",
             height: "100vh",
+            width: "100vw",
         }}>
             <div style={{
                 position: "fixed",
