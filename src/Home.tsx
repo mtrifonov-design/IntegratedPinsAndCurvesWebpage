@@ -372,7 +372,10 @@ Pins and Curves is free to use, with a forever-free tier that ensures everyone c
                 {/* Call-to-Action Section */}
 
 
-                <section id="cta" style={{ textAlign: 'center', padding: '50px 20px',
+                <section id="cta" style={{ 
+                    
+                    textAlign: 'center',
+                    padding: '50px 20px',
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
@@ -380,7 +383,12 @@ Pins and Curves is free to use, with a forever-free tier that ensures everyone c
                 }}>
                     <H2>Become a tester</H2>
 
-                    <P>Join the early access program and let us know how we can make Pins and Curves work for you.</P>
+                    <P>Join the early access program and let us know how we can make Pins and Curves work for you.
+                    
+                    You'll receive information about the development process and instructions on how to get started.<br></br><br></br>
+                    It's 100% free, and you can cancel anytime.
+
+                    </P>
                     <br></br>
                     <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
                         onClick={openSubscriptionForm}
