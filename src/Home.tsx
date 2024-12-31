@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@mtrifonov-design/pinsandcurves-specialuicomponents';
-
+import { Navigate, useNavigate } from 'react-router';
 
 
 const H1 = (props: { children: React.ReactNode }) => <h1 style={{ fontSize: '2.75em', margin: '0.75em 0', fontFamily: "nudicamedium", color: "var(--gray8)" }}>{props.children}</h1>;
@@ -44,6 +44,7 @@ const PinsAndCurvesLandingPage: React.FC = () => {
     const under2000 = window.innerWidth < 2000;
 
     const [menuOpen, setMenuOpen] = React.useState(false);
+    const navigate = useNavigate();
 
 
     return (
@@ -171,7 +172,8 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                     }} />
                     <H1>Pins and Curves:<br></br> Motion Design, Reimagined</H1>
                     <P>
-                        Pins and Curves is a signal-based animation editor that seamlessly blends manual keyframing with procedural elements. Stay agile, iterate faster, and retain complete creative control.
+                    Pins and Curves is a free motion design tool that runs in your browser. With its unique signal-based approach,
+                    it combines manual keyframing with procedural elements, making your animation workflow smarter.
                     </P>
                     <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
                         onClick={openSubscriptionForm}
@@ -283,7 +285,7 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                                         <div style={{
                         display: "flex",
                         flexDirection: "row",
-                        alignItems: "center",
+                        alignItems: "flex-start",
                         justifyContent: "center",
                         gap: "100px",
                         padding: "50px",
@@ -299,13 +301,14 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                             flexDirection: "column",
                             alignItems: "center",
                             justifyContent: "center",
-                            width: "500px",
+                            maxWidth: "500px",
+                            width: "30%",
 
                         }}>
                         <span className="materialSymbols" style={{ fontSize: "50px", marginBottom: "20px" }}>speed</span>
                         <p>
                         <strong style={{ color: "white", textAlign: "center" }}>STAY AGILE, ITERATE FASTER</strong><br></br><br></br>
-                        With pins and curves, your workflow keeps up with your ideas, no matter how fast they evolve. Automate repetitive tasks, experiment freely, and refine your animations without starting from scratch.
+                        With Pins and Curves, your workflow keeps up with your ideas, no matter how fast they evolve. Automate repetitive tasks, experiment freely, and refine your animations without starting from scratch.
                         </p>
                     </div>
                     <div style={{
@@ -314,12 +317,32 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                         alignItems: "center",
                         justifyContent: "center",
                         maxWidth: "500px",
+                        width: "30%",
                     }}>
                         <span className="materialSymbols" style={{ fontSize: "50px", marginBottom: "20px" }}>code</span>
                         <p>
-                            <strong style={{ color: "white", textAlign: "center" }}>CUSTOMIZE, AUTOMATE AND EXTEND WITH EASE</strong><br></br><br></br>
+                            <strong style={{ color: "white", textAlign: "center" }}>CUSTOMIZE, AUTOMATE AND EXTEND</strong><br></br><br></br>
                             Pins and Curves integrates seamlessly with web technologies, empowering you to tailor your project to your vision—whether through simple tweaks or powerful scripting.
                         
+
+                        </p>
+
+                    </div>
+                    <div style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        maxWidth: "500px",
+                        width: "30%",
+                    }}>
+                        <span className="materialSymbols" style={{ fontSize: "50px", marginBottom: "20px" }}>key</span>
+                        <p>
+                            <strong style={{ color: "white", textAlign: "center" }}>ACCESSIBLE FOR EVERY CREATOR</strong><br></br><br></br>
+
+Pins and Curves is free to use, with a forever-free tier that ensures everyone can start creating without barriers. Whether you're exploring new ideas or diving into advanced workflows, it’s always within reach.
+
+
 
                         </p>
 
@@ -420,7 +443,12 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                 }}>
 
                     Pins And Curves, 2024 ©
+                    
+                    <span style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => navigate("privacy-policy")}>Privacy Policy</span>
+                    <span style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => navigate("imprint")}>Imprint</span>
                     <a href={discordUrl} style={{ color: "var(--gray7)" }}>Discord</a>
+
+                    
                     
                     <a href={aboutUrl} style={{ color: "var(--gray7)" }}>Resources</a>
                     <a href={resourcesUrl} style={{ color: "var(--gray7)" }}>About</a>
