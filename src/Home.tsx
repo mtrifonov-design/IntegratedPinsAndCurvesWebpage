@@ -460,8 +460,8 @@ Pins and Curves is free to use, with a forever-free tier that ensures everyone c
 
                     
                     
-                    <a href={aboutUrl} style={{ color: "var(--gray7)" }}>Resources</a>
-                    <a href={resourcesUrl} style={{ color: "var(--gray7)" }}>About</a>
+                    <a href={resourcesUrl} style={{ color: "var(--gray7)" }}>Resources</a>
+                    <a href={aboutUrl} style={{ color: "var(--gray7)" }}>About</a>
                 
                 </section>
 
