@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from '@mtrifonov-design/pinsandcurves-specialuicomponents';
 import { useNavigate } from 'react-router';
 
@@ -35,6 +35,8 @@ const Menu = () => {
 
 
 const openSubscriptionForm = () => {
+    // @ts-ignore
+    rdt('track', 'PageVisit');
     window.open("http://eepurl.com/i6WBsQ", "_blank");
 }
 
@@ -45,6 +47,34 @@ const PinsAndCurvesLandingPage: React.FC = () => {
 
     const [menuOpen, setMenuOpen] = React.useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+
+        // @ts-ignore
+        !function(w, d) {
+            // @ts-ignore
+            if (!w.rdt) {
+                // @ts-ignore
+                var p = w.rdt = function() {
+                    // @ts-ignore
+                    p.sendEvent ? p.sendEvent.apply(p, arguments) : p.callQueue.push(arguments);
+                };
+                // @ts-ignore
+                p.callQueue = [];
+                var t = d.createElement("script");
+                t.src = "https://www.redditstatic.com/ads/pixel.js";
+                t.async = true;
+                var s = d.getElementsByTagName("script")[0];
+                // @ts-ignore
+                s.parentNode.insertBefore(t, s);
+            }
+        }(window, document);
+    
+        // @ts-ignore
+        rdt('init', 'a2_g9b2q1oqwqyj');
+        // @ts-ignore
+        rdt('track', 'PageVisit');
+    }, []);
 
 
     return (
