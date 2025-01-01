@@ -36,7 +36,7 @@ const Menu = () => {
 
 const openSubscriptionForm = () => {
     // @ts-ignore
-    rdt('track', 'PageVisit');
+    rdt('track', 'SignUp');
     window.open("http://eepurl.com/i6WBsQ", "_blank");
 }
 
