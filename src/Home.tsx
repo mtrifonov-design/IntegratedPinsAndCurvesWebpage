@@ -10,6 +10,8 @@ const P = (props: { children: React.ReactNode }) => <p style={{ maxWidth: "500px
 const discordUrl = "https://discord.gg/TU8G3J5v";
 const aboutUrl = "https://pinsandcurves.notion.site/About-1695fdbd72d380f4b03dd67972d6abae?pvs=4"
 const resourcesUrl = "https://pinsandcurves.notion.site/Pins-And-Curves-1695fdbd72d380a78b03e586c2802150?pvs=4"
+const instagramUrl = "https://www.instagram.com/pinsandcurves/"
+const youtubeUrl = "https://www.youtube.com/@pinsandcurves"
 
 
 const Menu = () => {
@@ -23,6 +25,8 @@ const Menu = () => {
                 gap: "40px",
                 justifyContent: "center",
             }}>
+                <a href={instagramUrl} style={{ color: "var(--gray7)" }}>Instagram</a>
+                <a href={youtubeUrl} style={{ color: "var(--gray7)" }}>YouTube</a>
                 <a href={discordUrl} style={{ color: "var(--gray7)" }}>Discord</a>
                 <a href={resourcesUrl} style={{ color: "var(--gray7)" }}>Resources</a>
                 <a href={aboutUrl} style={{ color: "var(--gray7)" }}>About</a>
@@ -33,10 +37,63 @@ const Menu = () => {
     );
 }
 
+const CookieBanner = () => {
+
+    const [decisionMade, setDecisionMade] = React.useState(false);
+
+    return (
+        <div style={{
+            position: "fixed",
+            display: decisionMade ? "none" : "flex",
+            bottom: "0",
+            left: "0",
+            width: "100%",
+            backgroundColor: "var(--gray2)",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            padding: "15px",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "10px",
+            zIndex: 100,
+        }}>
+            <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "10px",
+
+
+            }}>
+            <span className="materialSymbols" style={{ fontSize: "30px" }}>cookie</span>
+            <P>
+            This site uses cookies to enhance your experience, analyze traffic, and support marketing efforts.
+            </P>
+            </div>
+            <Button text="Use Only Essential"  bgColor="var(--gray6)" color="var(--gray1)" onClick={() => {
+                window.localStorage.setItem("cookieConsent", "false");
+                setDecisionMade(true);
+            }}></Button>
+            <div style={{
+                filter: "drop-shadow(0px 0px 10px #d1ffd250)",
+            }}>
+            <Button text="Accept"  bgColor="var(--green3)" color="var(--gray8)" onClick={() => {
+                window.localStorage.setItem("cookieConsent", "true");
+                setDecisionMade(true);
+            }}></Button>
+            </div>
+
+        </div>
+    );
+}
+
 
 const openSubscriptionForm = () => {
-    // @ts-ignore
-    rdt('track', 'SignUp');
+    const consent = JSON.parse(window.localStorage.getItem("cookieConsent") || "false");
+    if (consent) {
+        // @ts-ignore
+        rdt('track', 'SignUp');
+    }
     window.open("http://eepurl.com/i6WBsQ", "_blank");
 }
 
@@ -50,30 +107,37 @@ const PinsAndCurvesLandingPage: React.FC = () => {
 
     useEffect(() => {
 
-        // @ts-ignore
-        !function(w, d) {
+        const consent = JSON.parse(window.localStorage.getItem("cookieConsent") || "false");
+
+        if (consent) {
+
             // @ts-ignore
-            if (!w.rdt) {
+            !function(w, d) {
                 // @ts-ignore
-                var p = w.rdt = function() {
+                if (!w.rdt) {
                     // @ts-ignore
-                    p.sendEvent ? p.sendEvent.apply(p, arguments) : p.callQueue.push(arguments);
-                };
-                // @ts-ignore
-                p.callQueue = [];
-                var t = d.createElement("script");
-                t.src = "https://www.redditstatic.com/ads/pixel.js";
-                t.async = true;
-                var s = d.getElementsByTagName("script")[0];
-                // @ts-ignore
-                s.parentNode.insertBefore(t, s);
-            }
-        }(window, document);
-    
-        // @ts-ignore
-        rdt('init', 'a2_g9b2q1oqwqyj');
-        // @ts-ignore
-        rdt('track', 'PageVisit');
+                    var p = w.rdt = function() {
+                        // @ts-ignore
+                        p.sendEvent ? p.sendEvent.apply(p, arguments) : p.callQueue.push(arguments);
+                    };
+                    // @ts-ignore
+                    p.callQueue = [];
+                    var t = d.createElement("script");
+                    t.src = "https://www.redditstatic.com/ads/pixel.js";
+                    t.async = true;
+                    var s = d.getElementsByTagName("script")[0];
+                    // @ts-ignore
+                    s.parentNode.insertBefore(t, s);
+                }
+            }(window, document);
+        
+            // @ts-ignore
+            rdt('init', 'a2_g9b2q1oqwqyj');
+            // @ts-ignore
+            rdt('track', 'PageVisit');
+
+        }
+
     }, []);
 
 
@@ -148,6 +212,8 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                     style={{fontSize: "30px"}} className="materialSymbols">{menuOpen ? "close" : "menu"}</span>:
                     (<>
                     <a href={discordUrl} style={{ color: "var(--gray7)" }}>Discord</a>                    
+                    <a href={youtubeUrl} style={{ color: "var(--gray7)" }}>YouTube</a>
+                    <a href={instagramUrl} style={{ color: "var(--gray7)" }}>Instagram</a>
                     <a href={resourcesUrl} style={{ color: "var(--gray7)" }}>Resources</a>
                     <a href={aboutUrl} style={{ color: "var(--gray7)" }}>About</a>
                     <Button text="Request Early Access" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
@@ -178,6 +244,7 @@ const PinsAndCurvesLandingPage: React.FC = () => {
 
             </div>
             <br></br>
+            <CookieBanner />
 
             {menuOpen ? <Menu /> :
                 <>
@@ -429,7 +496,7 @@ Pins and Curves is free to use, with a forever-free tier that ensures everyone c
                         onClick={openSubscriptionForm}
                     ></Button>
                     <div style={{display: isMobile ? "flex" : "none", flexDirection: "row", gap: "15px"}}>
-                    <a href={discordUrl} style={{ color: "var(--gray7)",marginTop: "15px" }}>Discord</a>
+                    
                     <a href={resourcesUrl} style={{ color: "var(--gray7)", marginTop: "15px" }}>Resources</a>
                     <a href={aboutUrl} style={{ color: "var(--gray7)", marginTop: "15px" }}>About</a>
                     </div>
@@ -491,6 +558,8 @@ Pins and Curves is free to use, with a forever-free tier that ensures everyone c
                     
                     <span style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => navigate("privacy-policy")}>Privacy Policy</span>
                     <span style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => navigate("imprint")}>Imprint</span>
+                    <a href={instagramUrl} style={{ color: "var(--gray7)" }}>Instagram</a>
+                    <a href={youtubeUrl} style={{ color: "var(--gray7)" }}>YouTube</a>
                     <a href={discordUrl} style={{ color: "var(--gray7)" }}>Discord</a>
 
                     
