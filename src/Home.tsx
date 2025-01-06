@@ -7,7 +7,7 @@ const H1 = (props: { children: React.ReactNode }) => <h1 style={{ fontSize: '2.7
 const H2 = (props: { children: React.ReactNode, style?: any }) => <h2 style={{ fontSize: '1.75em', maxWidth: "600px", margin: '1em 0', fontFamily: "nudicamedium", color: "var(--gray8)", ...props.style }}>{props.children}</h2>;
 const P = (props: { children: React.ReactNode }) => <p style={{ maxWidth: "500px", margin: "0" }}>{props.children}</p>;
 
-const discordUrl = "https://discord.gg/TU8G3J5v";
+const discordUrl = "https://discord.gg/YydHcY2m9A";
 const aboutUrl = "https://pinsandcurves.notion.site/About-1695fdbd72d380f4b03dd67972d6abae?pvs=4"
 const resourcesUrl = "https://pinsandcurves.notion.site/Pins-And-Curves-1695fdbd72d380a78b03e586c2802150?pvs=4"
 const instagramUrl = "https://www.instagram.com/pinsandcurves/"
