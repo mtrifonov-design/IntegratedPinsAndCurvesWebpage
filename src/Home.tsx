@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Button } from '@mtrifonov-design/pinsandcurves-specialuicomponents';
 import { useNavigate } from 'react-router';
-
+import { InstagramEmbed } from 'react-social-media-embed';
 
 const H1 = (props: { children: React.ReactNode }) => <h1 style={{ fontSize: '2.75em', margin: '0.75em 0', fontFamily: "nudicamedium", color: "var(--gray8)" }}>{props.children}</h1>;
 const H2 = (props: { children: React.ReactNode, style?: any }) => <h2 style={{ fontSize: '1.75em', maxWidth: "600px", margin: '1em 0', fontFamily: "nudicamedium", color: "var(--gray8)", ...props.style }}>{props.children}</h2>;
@@ -13,6 +13,22 @@ const resourcesUrl = "https://pinsandcurves.notion.site/Pins-And-Curves-1695fdbd
 const instagramUrl = "https://www.instagram.com/pinsandcurves/"
 const youtubeUrl = "https://www.youtube.com/@pinsandcurves"
 
+
+const YoutubePost = ({src,isMobile} : {src:string,isMobile:boolean}) => {
+    const width = 800;
+    return <iframe 
+    width={width} height={width * 0.5625} 
+    src={src} 
+    style={{
+        width: isMobile ? "100vw" : undefined,
+        height: isMobile ? "calc(100vw * 0.5625)" : undefined,
+    }}
+    title="YouTube video player" 
+    frameBorder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerPolicy="strict-origin-when-cross-origin" 
+    allowFullScreen></iframe>
+}
 
 const Menu = () => {
     return (
@@ -500,6 +516,48 @@ Pins and Curves is free to use, with a forever-free tier that ensures everyone c
                     <a href={resourcesUrl} style={{ color: "var(--gray7)", marginTop: "15px" }}>Resources</a>
                     <a href={aboutUrl} style={{ color: "var(--gray7)", marginTop: "15px" }}>About</a>
                     </div>
+                </section>
+
+                <hr style={{
+                        width: "100%",
+                        border: "none",
+                        borderBottom: "1px solid var(--gray3)",
+                        margin: "50px 0"
+                    }}></hr>
+
+                <section id="showcase" style={{
+                    padding: '50px',
+                    borderRadius: "var(--borderRadiusSmall)",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                }}>
+
+                <H2>Showcase</H2>   
+
+                <div style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        justifyContent: "center",
+                        gap: "20px",
+                        padding: isMobile ? "0px" : "50px",
+                        width: "100%",
+
+                        flexWrap: "wrap",
+                    }}>
+
+
+
+
+                        <YoutubePost isMobile={isMobile} src="https://www.youtube.com/embed/Go1Y5kGxghM?si=cl-ZcvzK7GJ1yqJB" />
+                        <YoutubePost isMobile={isMobile} src="https://www.youtube.com/embed/y2LbYlayJ-A?si=XJJmlu_bDj9xCUh9" />
+                        <YoutubePost isMobile={isMobile} src="https://www.youtube.com/embed/Yi6Z-OlO4_s?si=5vPOM49u8tbFIXdI" />
+                 
+                
+                </div>
+
                 </section>
 
                 <hr style={{
