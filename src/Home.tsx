@@ -127,29 +127,29 @@ const PinsAndCurvesLandingPage: React.FC = () => {
 
         if (consent) {
 
-            // @ts-ignore
-            !function(w, d) {
-                // @ts-ignore
+            // @ts-expect-error external code
+            const ex = !function(w, d) {
+                // @ts-expect-error external code
                 if (!w.rdt) {
-                    // @ts-ignore
+                    // @ts-expect-error external code
                     var p = w.rdt = function() {
-                        // @ts-ignore
+                        // @ts-expect-error external code
                         p.sendEvent ? p.sendEvent.apply(p, arguments) : p.callQueue.push(arguments);
                     };
-                    // @ts-ignore
+                    // @ts-expect-error external code
                     p.callQueue = [];
                     var t = d.createElement("script");
                     t.src = "https://www.redditstatic.com/ads/pixel.js";
                     t.async = true;
                     var s = d.getElementsByTagName("script")[0];
-                    // @ts-ignore
+                    // @ts-expect-error external code
                     s.parentNode.insertBefore(t, s);
                 }
             }(window, document);
         
-            // @ts-ignore
+            // @ts-expect-error external code
             rdt('init', 'a2_g9b2q1oqwqyj');
-            // @ts-ignore
+            // @ts-expect-error external code
             rdt('track', 'PageVisit');
 
         }
