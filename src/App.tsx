@@ -2,7 +2,7 @@
 import { HashRouter, Routes, Route } from 'react-router'
 import PinsAndCurvesClient from './PinsAndCurvesClient'
 import Launcher from './Launcher'
-import Home from './Home'
+import Home from './Home/Home'
 import PrivacyPolicy from './PrivacyPolicy'
 import Imprint from './Imprint'
 
