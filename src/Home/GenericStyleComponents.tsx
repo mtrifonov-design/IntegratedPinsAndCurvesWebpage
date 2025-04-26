@@ -7,7 +7,7 @@ const P = (props: { children: React.ReactNode }) => <p style={{ maxWidth: "600px
     textAlign: "left"
  }}>{props.children}</p>;
 
-const HR = (props: { style?: any }) => <hr style={{
+const HR = () => <hr style={{
     width: "100%",
     border: "none",
     borderBottom: "1px solid var(--gray3)",

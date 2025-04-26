@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Button } from '@mtrifonov-design/pinsandcurves-specialuicomponents';
 import { useNavigate } from 'react-router';
 import URLS from '../Home/URLS';
