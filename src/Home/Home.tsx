@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import URLS from '../Home/URLS';
 import NavigationBar from './NavigationBar';
 
-const { discordUrl, aboutUrl, resourcesUrl, instagramUrl, youtubeUrl } = URLS;
+const { discordUrl, aboutUrl, resourcesUrl } = URLS;
 import { P, H2, HR, H1 } from './GenericStyleComponents';
 
 const openSubscriptionForm = () => {
@@ -187,8 +187,6 @@ const PinsAndCurvesLandingPage: React.FC = () => {
 
                         <span style={{ textDecoration: "underline", cursor: "pointer" }} onClick={() => navigate("privacy-policy")}>Privacy Policy</span>
                         <span style={{ textDecoration: "underline", cursor: "pointer" }} onClick={() => navigate("imprint")}>Imprint</span>
-                        <a href={instagramUrl} style={{ color: "var(--gray7)" }}>Instagram</a>
-                        <a href={youtubeUrl} style={{ color: "var(--gray7)" }}>YouTube</a>
                         <a href={discordUrl} style={{ color: "var(--gray7)" }}>Discord</a>
                     </section>
 

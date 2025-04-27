@@ -2,7 +2,7 @@ import URLS from '../Home/URLS';
 import React from 'react';
 import { Button } from '@mtrifonov-design/pinsandcurves-specialuicomponents';
 
-const { discordUrl, aboutUrl, instagramUrl, youtubeUrl } = URLS;
+const { discordUrl, aboutUrl } = URLS;
 
 
 const Menu = (p: {
@@ -19,8 +19,6 @@ const Menu = (p: {
             gap: "40px",
             justifyContent: "center",
         }}>
-            <a href={instagramUrl} style={{ color: "var(--gray7)" }}>Instagram</a>
-            <a href={youtubeUrl} style={{ color: "var(--gray7)" }}>YouTube</a>
             <a href={discordUrl} style={{ color: "var(--gray7)" }}>Discord</a>
             <a href={aboutUrl} style={{ color: "var(--gray7)" }}>Learn more</a>
             <Button text="Get updates" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
@@ -95,8 +93,6 @@ function NavigationBar(p:
                         (<>
                             <a href={aboutUrl} style={{ color: "var(--gray7)" }}>Learn more</a>
                             <a href={discordUrl} style={{ color: "var(--gray7)" }}>Discord</a>
-                            <a href={youtubeUrl} style={{ color: "var(--gray7)" }}>YouTube</a>
-                            <a href={instagramUrl} style={{ color: "var(--gray7)" }}>Instagram</a>
 
                             <Button text="Get updates" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
                                 onClick={openSubscriptionForm}
