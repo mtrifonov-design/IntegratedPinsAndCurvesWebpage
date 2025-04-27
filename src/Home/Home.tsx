@@ -57,7 +57,7 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                             </H1>
                         </div>
                         <P>
-                            The motion-design industry runs on third-party plugins that turbo-charge creative software and simplify workflows.
+                            The motion-design industry depends on third-party plugins that turbo-charge creative software and simplify workflows.
                             <br></br>
                             <br></br>
                             We're here to push that idea to its limit:<br></br>
@@ -65,7 +65,7 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                             Developers ship helpful tools faster, designers mix and match them in seconds.
                             <br></br>
                             <br></br>
-                            That's the vision for the <b>Pins & Curves Motion Playground.</b>
+                            That's the vision behind <b>Pins & Curves.</b>
 
                         </P>
                         <Button text="Get updates" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
