@@ -82,32 +82,74 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                         alignItems: "center",
                         justifyContent: "center",
                     }}>
-                        <img src="/media/p5pacscreenshotpng.png" alt="Overview 1" style={{
-                            width: `clamp(100px, ${under2000 ? "1000px" : "1200px"}, calc(100vw - 100px))`,
-                            filter: "drop-shadow(0px 0px 30px rgba(0,0,0,0.7))", borderRadius: "var(--borderRadiusSmall)"
-                        }} />
-                        <H2>Our latest experiment</H2>
-                        <P>
-                            As a first milestone on our journey, we built a tool that lets you add a timeline to your p5.js sketches.
-                            <br></br>
-                            <br></br>
-                            This was achieved by creating several <b>panel plugins</b>  that work together to create a unified animation experience.
-                            <br></br>
-                            Amongst them are a <b>timeline panel</b>, a <b>code editor panel</b>, a <b>preview panel</b>, and a <b>signal panel</b>.
-                            <br></br>
-                            <br></br>
-                            Through this experiment, we are putting our initial plugin architecture to the test.
-                            <br></br>
-                            <br></br>
-                        </P>
-                        <Button text="Run demo" iconName='open_in_new' 
-                            bgColor='var(--green3)' color='var(--gray8)'
-                            hoverBgColor='var(--green2)' hoverColor='var(--gray8)'
-                            onClick={() => {
-                                window.open("https://run.pinsandcurves.app/?template=default", "_blank");
-                            }}
-                        ></Button>
+                        <H2>Our latest experiments</H2>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            border: "2px solid var(--gray1)",
+                            paddingTop: "40px",
+                            paddingBottom: "40px",
+                            borderRadius: "var(--borderRadiusSmall)",
+                        }}>
+                            <img src="/media/cyberspagpreview.png" alt="Overview 1" style={{
+                                width: `clamp(100px, ${under2000 ? "1000px" : "1200px"}, calc(100vw - 100px))`,
+                                filter: "drop-shadow(0px 0px 30px rgba(0,0,0,0.7))", borderRadius: "var(--borderRadiusSmall)"
+                            }} />
+                            <H2>cyber spaghetti </H2>
+                            <P>
+                                Based on our previous p5js timeline experiment, we are building a simple tool that lets you create stylised "cyber spaghetti" animations.
+                                <br></br>
+                                <br></br>
+                            </P>
+                            <Button text="Run demo" iconName='open_in_new' 
+                                bgColor='var(--green3)' color='var(--gray8)'
+                                hoverBgColor='var(--green2)' hoverColor='var(--gray8)'
+                                onClick={() => {
+                                    window.open("https://run.pinsandcurves.app/?template=cyberspaghetti", "_blank");
+                                }}
+                            ></Button>
+                        </div>
                         <br></br>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            border: "2px solid var(--gray1)",
+                            paddingTop: "40px",
+                            paddingBottom: "40px",
+                            borderRadius: "var(--borderRadiusSmall)",
+                        }}>
+                            <img src="/media/p5timeline.png" alt="Overview 1" style={{
+                                width: `clamp(100px, ${under2000 ? "1000px" : "1200px"}, calc(100vw - 100px))`,
+                                filter: "drop-shadow(0px 0px 30px rgba(0,0,0,0.7))", borderRadius: "var(--borderRadiusSmall)"
+                            }} />
+                            <H2>timeline for p5js sketches </H2>
+                            <P>
+                                As a first milestone on our journey, we built a tool that lets you add a timeline to your p5.js sketches.
+                                <br></br>
+                                <br></br>
+                                This was achieved by creating several <b>panel plugins</b>  that work together to create a unified animation experience.
+                                <br></br>
+                                Amongst them are a <b>timeline panel</b>, a <b>code editor panel</b>, a <b>preview panel</b>, and a <b>signal panel</b>.
+                                <br></br>
+                                <br></br>
+                                Through this experiment, we are putting our initial plugin architecture to the test.
+                                <br></br>
+                                <br></br>
+                            </P>
+                            <Button text="Run demo" iconName='open_in_new' 
+                                bgColor='var(--green3)' color='var(--gray8)'
+                                hoverBgColor='var(--green2)' hoverColor='var(--gray8)'
+                                onClick={() => {
+                                    window.open("https://run.pinsandcurves.app/?template=default", "_blank");
+                                }}
+                            ></Button>
+                        </div>
+                        <br></br>
+
 
                         <div style={{ display: isMobile ? "flex" : "none", flexDirection: "row", gap: "15px" }}>
 
