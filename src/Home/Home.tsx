@@ -91,6 +91,8 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                             border: "2px solid var(--gray1)",
                             paddingTop: "40px",
                             paddingBottom: "40px",
+                            paddingLeft: "20px",
+                            paddingRight: "20px",
                             borderRadius: "var(--borderRadiusSmall)",
                         }}>
                             <img src="/media/cyberspagpreview.png" alt="Overview 1" style={{
@@ -120,6 +122,8 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                             border: "2px solid var(--gray1)",
                             paddingTop: "40px",
                             paddingBottom: "40px",
+                            paddingLeft: "20px",
+                            paddingRight: "20px",
                             borderRadius: "var(--borderRadiusSmall)",
                         }}>
                             <img src="/media/p5timeline.png" alt="Overview 1" style={{
