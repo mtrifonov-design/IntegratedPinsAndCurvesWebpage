@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@mtrifonov-design/pinsandcurves-specialuicomponents';
 import { useNavigate } from 'react-router';
 import URLS from '../Home/URLS';
-import NavigationBar from './NavigationBar';
+import NavigationBar from '../NavigationBar/NavigationBar';
 
 const { discordUrl, aboutUrl, resourcesUrl } = URLS;
 import { P, H2, HR, H1 } from './GenericStyleComponents';
@@ -231,8 +231,8 @@ const PinsAndCurvesLandingPage: React.FC = () => {
 
                         Pins And Curves, 2025 ©
 
-                        <span style={{ textDecoration: "underline", cursor: "pointer" }} onClick={() => navigate("privacy-policy")}>Privacy Policy</span>
-                        <span style={{ textDecoration: "underline", cursor: "pointer" }} onClick={() => navigate("imprint")}>Imprint</span>
+                        <span style={{ textDecoration: "underline", cursor: "pointer" }} onClick={() => navigate("/privacy-policy")}>Privacy Policy</span>
+                        <span style={{ textDecoration: "underline", cursor: "pointer" }} onClick={() => navigate("/imprint")}>Imprint</span>
                         <a href={discordUrl} style={{ color: "var(--gray7)" }}>Discord</a>
                     </section>
 

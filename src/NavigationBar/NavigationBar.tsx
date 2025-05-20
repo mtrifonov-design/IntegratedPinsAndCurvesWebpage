@@ -1,6 +1,7 @@
 import URLS from '../Home/URLS';
 import React from 'react';
 import { Button } from '@mtrifonov-design/pinsandcurves-specialuicomponents';
+import { useNavigate } from 'react-router';
 
 const { discordUrl, aboutUrl } = URLS;
 
@@ -8,6 +9,7 @@ const { discordUrl, aboutUrl } = URLS;
 const Menu = (p: {
     openSubscriptionForm: () => void
 }) => {
+    const navigate = useNavigate();
     const { openSubscriptionForm } = p;
     return (
 
@@ -19,6 +21,8 @@ const Menu = (p: {
             gap: "40px",
             justifyContent: "center",
         }}>
+            <a onClick={() => navigate("/tools")} style={{ color: "var(--gray7)", textDecoration: "underline", cursor: "pointer" }}>Tools</a>
+            <a onClick={() => navigate("/about")} style={{ color: "var(--gray7)", textDecoration: "underline", cursor: "pointer" }}>About</a>
             <a href={discordUrl} style={{ color: "var(--gray7)" }}>Discord</a>
             <a href={aboutUrl} style={{ color: "var(--gray7)" }}>Learn more</a>
             <Button text="Get updates" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
@@ -37,6 +41,7 @@ function NavigationBar(p:
 
     const isMobile = window.innerWidth < 768;
     const [menuOpen, setMenuOpen] = React.useState(false);
+    const navigate = useNavigate();
 
     return menuOpen ? <Menu {...{openSubscriptionForm}} /> : <div style={{
             position: "fixed",
@@ -91,6 +96,9 @@ function NavigationBar(p:
 
                             style={{ fontSize: "30px" }} className="materialSymbols">{menuOpen ? "close" : "menu"}</span> :
                         (<>
+
+                            <a onClick={() => navigate("/tools")} style={{ color: "var(--gray7)", textDecoration: "underline", cursor: "pointer" }}>Tools</a>
+                            <a onClick={() => navigate("/about")} style={{ color: "var(--gray7)", textDecoration: "underline", cursor: "pointer" }}>About</a>
                             <a href={aboutUrl} style={{ color: "var(--gray7)" }}>Learn more</a>
                             <a href={discordUrl} style={{ color: "var(--gray7)" }}>Discord</a>
 
