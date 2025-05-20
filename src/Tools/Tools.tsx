@@ -22,6 +22,7 @@ interface ToolBoxProps {
     buttonColor?: string;
     buttonHoverBgColor?: string;
     buttonHoverColor?: string;
+    isMobile?: boolean;
 }
 
 const ToolBox: React.FC<ToolBoxProps> = ({
@@ -37,6 +38,7 @@ const ToolBox: React.FC<ToolBoxProps> = ({
     buttonColor = 'var(--gray8)',
     buttonHoverBgColor = 'var(--green2)',
     buttonHoverColor = 'var(--gray8)',
+    isMobile,
 }) => {
     const [hovered, setHovered] = React.useState(false);
     return (
@@ -44,7 +46,8 @@ const ToolBox: React.FC<ToolBoxProps> = ({
             style={{
                 display: "flex",
                 flexDirection: "column",
-                width: "500px",
+                width: "min(500px, calc(100vw - 40px))",
+                margin: "10px",
                 alignItems: "center",
                 justifyContent: "center",
                 border: hovered ? "2px solid var(--gray4)" : "2px solid var(--gray2)",
@@ -68,7 +71,13 @@ const ToolBox: React.FC<ToolBoxProps> = ({
             />
             <H2>{title}</H2>
             <P>{description}</P>
+            {isMobile ? 
             <Button
+                text={"Not available on mobile"}
+                iconName={"block"}
+                onClick={() => {}}
+            />
+            : <Button
                 text={buttonText}
                 iconName={buttonIcon}
                 bgColor={buttonBgColor}
@@ -76,7 +85,8 @@ const ToolBox: React.FC<ToolBoxProps> = ({
                 hoverBgColor={buttonHoverBgColor}
                 hoverColor={buttonHoverColor}
                 onClick={() => window.open(buttonUrl, "_blank")}
-            />
+            />}
+
         </div>
     );
 }
@@ -221,6 +231,7 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                         padding: '50px 20px',
                         display: "flex",
                         flexDirection: "row",
+                        flexWrap: "wrap",
                         gap: "20px",
                         alignItems: "center",
                         justifyContent: "center",
@@ -233,6 +244,7 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                             description={<><span>create warp speed animations</span><br /><br /></>}
                             buttonText="Run"
                             buttonUrl="https://run.pinsandcurves.app/?template=cyberspaghetti"
+                            isMobile={isMobile}
                         />
                         <ToolBox
                             stillSrc="/media/toolpreviews/lissajous_still.jpg"
@@ -242,8 +254,18 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                             description={<><span>create beautiful animated gradients</span><br /><br /></>}
                             buttonText="Run"
                             buttonUrl="https://run.pinsandcurves.app/?template=liquidlissajous"
+                            isMobile={isMobile}
                         />
                     </section>
+                    <section id="cta" style={{
+                        textAlign: 'center',
+                        maxWidth: "100vw",
+                        padding: '50px 40px',
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}>
                     <H2>... more tools are coming soon 🕙</H2>
                                             <P>
                             Sign up to our newsletter to get updates when new tools are released.
@@ -256,12 +278,13 @@ const PinsAndCurvesLandingPage: React.FC = () => {
 
 
                     <br></br>
-
+                    </section>
                     <HR></HR>
                     {/* ----------------------- Roadmap section --------------------------- */}
                     <section id="cta" style={{
                         textAlign: 'center',
-                        padding: '50px 20px',
+                        maxWidth: "100vw",
+                        padding: '50px 40px',
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
