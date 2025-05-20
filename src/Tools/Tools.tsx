@@ -1,30 +1,102 @@
 import React from 'react';
 import { Button } from '@mtrifonov-design/pinsandcurves-specialuicomponents';
 import { useNavigate } from 'react-router';
-import URLS from '../Home/URLS';
 import NavigationBar from '../NavigationBar/NavigationBar';
 
-const { discordUrl, aboutUrl, resourcesUrl } = URLS;
 import { P, H2, HR, H1 } from './GenericStyleComponents';
 
 const openSubscriptionForm = () => {
     window.open("http://eepurl.com/i6WBsQ", "_blank");
 }
 
-function ToolPreview({ stillSrc, videoSrc, alt }: { stillSrc: string, videoSrc: string, alt: string }) {
+interface ToolBoxProps {
+    stillSrc: string;
+    videoSrc: string;
+    alt: string;
+    title: string;
+    description: React.ReactNode;
+    buttonText: string;
+    buttonUrl: string;
+    buttonIcon?: string;
+    buttonBgColor?: string;
+    buttonColor?: string;
+    buttonHoverBgColor?: string;
+    buttonHoverColor?: string;
+}
+
+const ToolBox: React.FC<ToolBoxProps> = ({
+    stillSrc,
+    videoSrc,
+    alt,
+    title,
+    description,
+    buttonText,
+    buttonUrl,
+    buttonIcon = 'open_in_new',
+    buttonBgColor = 'var(--green3)',
+    buttonColor = 'var(--gray8)',
+    buttonHoverBgColor = 'var(--green2)',
+    buttonHoverColor = 'var(--gray8)',
+}) => {
+    const [hovered, setHovered] = React.useState(false);
+    return (
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "500px",
+                alignItems: "center",
+                justifyContent: "center",
+                border: hovered ? "2px solid var(--gray4)" : "2px solid var(--gray2)",
+                paddingTop: "40px",
+                paddingBottom: "40px",
+                paddingLeft: "20px",
+                paddingRight: "20px",
+                borderRadius: "var(--borderRadiusSmall)",
+                overflow: "hidden",
+                // boxShadow: hovered ? "0 0 25px 6px var(--green1)" : undefined,
+                // transition: "box-shadow 0.25s"
+            }}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+        >
+            <ToolPreview
+                stillSrc={stillSrc}
+                videoSrc={videoSrc}
+                alt={alt}
+                forceHover={hovered}
+            />
+            <H2>{title}</H2>
+            <P>{description}</P>
+            <Button
+                text={buttonText}
+                iconName={buttonIcon}
+                bgColor={buttonBgColor}
+                color={buttonColor}
+                hoverBgColor={buttonHoverBgColor}
+                hoverColor={buttonHoverColor}
+                onClick={() => window.open(buttonUrl, "_blank")}
+            />
+        </div>
+    );
+}
+
+// Update ToolPreview to accept forceHover prop
+function ToolPreview({ stillSrc, videoSrc, alt, forceHover }: { stillSrc: string, videoSrc: string, alt: string, forceHover?: boolean }) {
     const [hovered, setHovered] = React.useState(false);
     const [videoLoaded, setVideoLoaded] = React.useState(false);
     const videoRef = React.useRef<HTMLVideoElement>(null);
     const ambientRef = React.useRef<HTMLVideoElement>(null);
 
+    const effectiveHover = typeof forceHover === 'boolean' ? forceHover : hovered;
+
     React.useEffect(() => {
         if (videoRef.current) videoRef.current.load();
-        if (ambientRef.current) ambientRef.current.load();
+        if (ambientRef && ambientRef.current) ambientRef.current.load();
     }, [videoSrc]);
 
-    // Play/pause both videos on hover
     React.useEffect(() => {
-        if (hovered && videoLoaded) {
+        if (effectiveHover && videoLoaded) {
             if (videoRef.current) {
                 videoRef.current.currentTime = 0;
                 videoRef.current.play();
@@ -43,7 +115,7 @@ function ToolPreview({ stillSrc, videoSrc, alt }: { stillSrc: string, videoSrc: 
                 ambientRef.current.currentTime = 0;
             }
         }
-    }, [hovered, videoLoaded]);
+    }, [effectiveHover, videoLoaded]);
 
     return (
         <div
@@ -53,49 +125,11 @@ function ToolPreview({ stillSrc, videoSrc, alt }: { stillSrc: string, videoSrc: 
                 position: "relative",
                 borderRadius: "var(--borderRadiusSmall)",
                 overflow: "hidden",
-                cursor: "pointer",
                 background: "#222"
             }}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
-            {/* Ambient blurred video background */}
-            {hovered && videoLoaded && (
-                <div style={{
-                    position: "absolute",
-                    inset: 0,
-                    zIndex: 0,
-                    pointerEvents: "none",
-                    overflow: "hidden",
-                }}>
-                    <video
-                        ref={ambientRef}
-                        src={videoSrc}
-                        style={{
-                            width: "200%",
-                            height: "200%",
-                            position: "absolute",
-                            top: "-50%",
-                            left: "-50%",
-                            objectFit: "cover",
-                            filter: "blur(40px) brightness(0.7)",
-                        }}
-                        muted
-                        loop
-                        playsInline
-                        preload="auto"
-                        aria-hidden="true"
-                    />
-                    {/* Radial mask overlay: fade to black in center, more visible at edges */}
-                    <div style={{
-                        position: "absolute",
-                        inset: 0,
-                        pointerEvents: "none",
-                        background: "radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.2) 80%, rgba(0,0,0,0.8) 100%)",
-                        zIndex: 1,
-                    }} />
-                </div>
-            )}
             {/* Main preview still/video */}
             <img
                 src={stillSrc}
@@ -104,7 +138,7 @@ function ToolPreview({ stillSrc, videoSrc, alt }: { stillSrc: string, videoSrc: 
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
-                    display: hovered && videoLoaded ? "none" : "block",
+                    display: effectiveHover && videoLoaded ? "none" : "block",
                     position: "absolute",
                     top: 0,
                     left: 0,
@@ -119,7 +153,7 @@ function ToolPreview({ stillSrc, videoSrc, alt }: { stillSrc: string, videoSrc: 
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
-                    display: hovered && videoLoaded ? "block" : "none",
+                    display: effectiveHover && videoLoaded ? "block" : "none",
                     position: "absolute",
                     top: 0,
                     left: 0,
@@ -191,74 +225,24 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                         alignItems: "center",
                         justifyContent: "center",
                     }}>
-                        {/* Spaghetti Tool Box */}
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            width: "500px",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            border: "2px solid var(--gray2)",
-                            paddingTop: "40px",
-                            paddingBottom: "40px",
-                            paddingLeft: "20px",
-                            paddingRight: "20px",
-                            borderRadius: "var(--borderRadiusSmall)",
-                            overflow: "hidden",
-                        }}>
-                            <ToolPreview
-                                stillSrc="/media/toolpreviews/spaghetti_still.jpg"
-                                videoSrc="/media/toolpreviews/spaghetti_video.mp4"
-                                alt="Spaghetti tool preview"
-                            />
-                            <H2>cyber spaghetti</H2>
-                            <P>
-                                create warp speed animations
-                                <br></br>
-                                <br></br>
-                            </P>
-                            <Button text="Run" iconName='open_in_new' 
-                                bgColor='var(--green3)' color='var(--gray8)'
-                                hoverBgColor='var(--green2)' hoverColor='var(--gray8)'
-                                onClick={() => {
-                                    window.open("https://run.pinsandcurves.app/?template=spaghetti", "_blank");
-                                }}
-                            ></Button>
-                        </div>
-                        {/* Lissajous Tool Box */}
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            width: "500px",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            border: "2px solid var(--gray2)",
-                            paddingTop: "40px",
-                            paddingBottom: "40px",
-                            paddingLeft: "20px",
-                            paddingRight: "20px",
-                            borderRadius: "var(--borderRadiusSmall)",
-                            overflow: "hidden",
-                        }}>
-                            <ToolPreview
-                                stillSrc="/media/toolpreviews/lissajous_still.jpg"
-                                videoSrc="/media/toolpreviews/lissajous_video.mp4"
-                                alt="Lissajous tool preview"
-                            />
-                            <H2>liquid lissajous</H2>
-                            <P>
-                                create beautiful animated gradients
-                                <br></br>
-                                <br></br>
-                            </P>
-                            <Button text="Run" iconName='open_in_new' 
-                                bgColor='var(--green3)' color='var(--gray8)'
-                                hoverBgColor='var(--green2)' hoverColor='var(--gray8)'
-                                onClick={() => {
-                                    window.open("https://run.pinsandcurves.app/?template=lissajous", "_blank");
-                                }}
-                            ></Button>
-                        </div>
+                        <ToolBox
+                            stillSrc="/media/toolpreviews/spaghetti_still.jpg"
+                            videoSrc="/media/toolpreviews/spaghetti_video.mp4"
+                            alt="Spaghetti tool preview"
+                            title="cyber spaghetti"
+                            description={<><span>create warp speed animations</span><br /><br /></>}
+                            buttonText="Run"
+                            buttonUrl="https://run.pinsandcurves.app/?template=cyberspaghetti"
+                        />
+                        <ToolBox
+                            stillSrc="/media/toolpreviews/lissajous_still.jpg"
+                            videoSrc="/media/toolpreviews/lissajous_video.mp4"
+                            alt="Lissajous tool preview"
+                            title="liquid lissajous"
+                            description={<><span>create beautiful animated gradients</span><br /><br /></>}
+                            buttonText="Run"
+                            buttonUrl="https://run.pinsandcurves.app/?template=liquidlissajous"
+                        />
                     </section>
                     <H2>... more tools are coming soon 🕙</H2>
                                             <P>
