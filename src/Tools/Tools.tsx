@@ -185,10 +185,12 @@ const PinsAndCurvesLandingPage: React.FC = () => {
     const isMobile = window.innerWidth < 768;
     
     useEffect(() => {
-        (window as any).goatcounter.count({
-            path:  "HOMEPAGE-TOOLS",
-            event: true,
-        })
+        if ((window as any).goatcounter) {
+            (window as any).goatcounter.count({
+                path:  "HOMEPAGE-TOOLS",
+                event: true,
+            })
+        }
     }, []);
 
     return (

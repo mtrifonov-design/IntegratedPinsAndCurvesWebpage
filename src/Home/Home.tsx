@@ -17,10 +17,12 @@ const PinsAndCurvesLandingPage: React.FC = () => {
     //const under2000 = window.innerWidth < 2000;
 
     useEffect(() => {
-        (window as any).goatcounter.count({
-            path:  "HOMEPAGE-ABOUT",
-            event: true,
-        })
+        if ((window as any).goatcounter) {
+            (window as any).goatcounter.count({
+                path:  "HOMEPAGE-ABOUT",
+                event: true,
+            })
+        }
     }, []);
 
     return (
