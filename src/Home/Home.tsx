@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from '@mtrifonov-design/pinsandcurves-specialuicomponents';
 import { useNavigate } from 'react-router';
 import URLS from '../Home/URLS';
 import NavigationBar from '../NavigationBar/NavigationBar';
 
-const { discordUrl, aboutUrl, resourcesUrl } = URLS;
+const { discordUrl } = URLS;
 import { P, H2, HR, H1, H3 } from './GenericStyleComponents';
 
 const openSubscriptionForm = () => {
@@ -14,7 +14,14 @@ const openSubscriptionForm = () => {
 const PinsAndCurvesLandingPage: React.FC = () => {
     const navigate = useNavigate();
     const isMobile = window.innerWidth < 768;
-    const under2000 = window.innerWidth < 2000;
+    //const under2000 = window.innerWidth < 2000;
+
+    useEffect(() => {
+        (window as any).goatcounter.count({
+            path:  "HOMEPAGE-ABOUT",
+            event: true,
+        })
+    }, []);
 
     return (
         <div style={{
@@ -122,7 +129,7 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                                 </li>
                                 <br></br>
                                 <li>
-                                    <b>AI access layer:</b><br></br>
+                                    <b>AI integration API:</b><br></br>
                                     Integrate powerful generative features without the boilerplate
                                 </li>
                                 <br></br>
@@ -136,8 +143,9 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                                     Built-in payments if you want to charge for your tool
                                 </li>
                             </ul>
-
-
+                            <br></br>
+                            The platform will be free to use for both developers and users. 
+                            If you monetize your tool, we'll charge a small commission to support our business.
                         </P>
 
                         <br></br>

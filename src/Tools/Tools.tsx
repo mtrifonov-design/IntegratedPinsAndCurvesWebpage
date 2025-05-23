@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from '@mtrifonov-design/pinsandcurves-specialuicomponents';
 import { useNavigate } from 'react-router';
 import NavigationBar from '../NavigationBar/NavigationBar';
@@ -8,6 +8,7 @@ import { P, H2, HR, H1 } from './GenericStyleComponents';
 const openSubscriptionForm = () => {
     window.open("http://eepurl.com/i6WBsQ", "_blank");
 }
+
 
 interface ToolBoxProps {
     stillSrc: string;
@@ -182,6 +183,13 @@ function ToolPreview({ stillSrc, videoSrc, alt, forceHover }: { stillSrc: string
 const PinsAndCurvesLandingPage: React.FC = () => {
     const navigate = useNavigate();
     const isMobile = window.innerWidth < 768;
+    
+    useEffect(() => {
+        (window as any).goatcounter.count({
+            path:  "HOMEPAGE-TOOLS",
+            event: true,
+        })
+    }, []);
 
     return (
         <div style={{
