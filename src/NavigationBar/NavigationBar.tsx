@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from '@mtrifonov-design/pinsandcurves-specialuicomponents';
 import { useNavigate } from 'react-router';
 
-const { discordUrl, aboutUrl } = URLS;
+const { discordUrl } = URLS;
 
 
 const Menu = (p: {
@@ -24,7 +24,6 @@ const Menu = (p: {
             <a onClick={() => navigate("/tools")} style={{ color: "var(--gray7)", textDecoration: "underline", cursor: "pointer" }}>Tools</a>
             <a onClick={() => navigate("/about")} style={{ color: "var(--gray7)", textDecoration: "underline", cursor: "pointer" }}>About</a>
             <a href={discordUrl} style={{ color: "var(--gray7)" }}>Discord</a>
-            <a href={aboutUrl} style={{ color: "var(--gray7)" }}>Learn more</a>
             <Button text="Get updates" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
                 onClick={openSubscriptionForm}
             ></Button>
@@ -99,7 +98,6 @@ function NavigationBar(p:
 
                             <a onClick={() => navigate("/tools")} style={{ color: "var(--gray7)", textDecoration: "underline", cursor: "pointer" }}>Tools</a>
                             <a onClick={() => navigate("/about")} style={{ color: "var(--gray7)", textDecoration: "underline", cursor: "pointer" }}>About</a>
-                            <a href={aboutUrl} style={{ color: "var(--gray7)" }}>Learn more</a>
                             <a href={discordUrl} style={{ color: "var(--gray7)" }}>Discord</a>
 
                             <Button text="Get updates" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'

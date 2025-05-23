@@ -5,7 +5,7 @@ import URLS from '../Home/URLS';
 import NavigationBar from '../NavigationBar/NavigationBar';
 
 const { discordUrl, aboutUrl, resourcesUrl } = URLS;
-import { P, H2, HR, H1 } from './GenericStyleComponents';
+import { P, H2, HR, H1, H3 } from './GenericStyleComponents';
 
 const openSubscriptionForm = () => {
     window.open("http://eepurl.com/i6WBsQ", "_blank");
@@ -53,7 +53,7 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                     }}>
                         <div>
                             <H1>
-                                Building a motion design tool<br></br> that puts plugins first.
+                                Building a motion design platform<br></br> that puts plugins first.
                             </H1>
                         </div>
                         <P>
@@ -61,8 +61,8 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                             <br></br>
                             <br></br>
                             We're here to push that idea to its limit:<br></br>
-                            Picture a bare bones motion design tool that anyone can create plugins for easily.
-                            Developers ship helpful tools faster, designers mix and match them in seconds.
+                            Picture a bare bones motion design platform that anyone can create plugins for easily.
+                            Developers ship tools faster, designers mix and match them in seconds.
                             <br></br>
                             <br></br>
                             That's the vision behind <b>Pins & Curves.</b>
@@ -73,95 +73,6 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                         ></Button>
                     </header>
                     <HR></HR>
-                    {/* ----------------------- Latest Experiment section --------------------------- */}
-                    <section id="cta" style={{
-                        textAlign: 'center',
-                        padding: '50px 20px',
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                    }}>
-                        <H2>Our latest experiments</H2>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            border: "2px solid var(--gray1)",
-                            paddingTop: "40px",
-                            paddingBottom: "40px",
-                            paddingLeft: "20px",
-                            paddingRight: "20px",
-                            borderRadius: "var(--borderRadiusSmall)",
-                        }}>
-                            <img src="/media/cyberspagpreview.png" alt="Overview 1" style={{
-                                width: `clamp(100px, ${under2000 ? "1000px" : "1200px"}, calc(100vw - 100px))`,
-                                filter: "drop-shadow(0px 0px 30px rgba(0,0,0,0.7))", borderRadius: "var(--borderRadiusSmall)"
-                            }} />
-                            <H2>cyber spaghetti </H2>
-                            <P>
-                                Based on our previous p5js timeline experiment, we are building a simple tool that lets you create stylised "cyber spaghetti" animations.
-                                <br></br>
-                                <br></br>
-                            </P>
-                            <Button text="Run demo" iconName='open_in_new' 
-                                bgColor='var(--green3)' color='var(--gray8)'
-                                hoverBgColor='var(--green2)' hoverColor='var(--gray8)'
-                                onClick={() => {
-                                    window.open("https://run.pinsandcurves.app/?template=cyberspaghetti", "_blank");
-                                }}
-                            ></Button>
-                        </div>
-                        <br></br>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            border: "2px solid var(--gray1)",
-                            paddingTop: "40px",
-                            paddingBottom: "40px",
-                            paddingLeft: "20px",
-                            paddingRight: "20px",
-                            borderRadius: "var(--borderRadiusSmall)",
-                        }}>
-                            <img src="/media/p5timeline.png" alt="Overview 1" style={{
-                                width: `clamp(100px, ${under2000 ? "1000px" : "1200px"}, calc(100vw - 100px))`,
-                                filter: "drop-shadow(0px 0px 30px rgba(0,0,0,0.7))", borderRadius: "var(--borderRadiusSmall)"
-                            }} />
-                            <H2>timeline for p5js sketches </H2>
-                            <P>
-                                As a first milestone on our journey, we built a tool that lets you add a timeline to your p5.js sketches.
-                                <br></br>
-                                <br></br>
-                                This was achieved by creating several <b>panel plugins</b>  that work together to create a unified animation experience.
-                                <br></br>
-                                Amongst them are a <b>timeline panel</b>, a <b>code editor panel</b>, a <b>preview panel</b>, and a <b>signal panel</b>.
-                                <br></br>
-                                <br></br>
-                                Through this experiment, we are putting our initial plugin architecture to the test.
-                                <br></br>
-                                <br></br>
-                            </P>
-                            <Button text="Run demo" iconName='open_in_new' 
-                                bgColor='var(--green3)' color='var(--gray8)'
-                                hoverBgColor='var(--green2)' hoverColor='var(--gray8)'
-                                onClick={() => {
-                                    window.open("https://run.pinsandcurves.app/?template=default", "_blank");
-                                }}
-                            ></Button>
-                        </div>
-                        <br></br>
-
-
-                        <div style={{ display: isMobile ? "flex" : "none", flexDirection: "row", gap: "15px" }}>
-
-                            <a href={resourcesUrl} style={{ color: "var(--gray7)", marginTop: "15px" }}>Resources</a>
-                            <a href={aboutUrl} style={{ color: "var(--gray7)", marginTop: "15px" }}>About</a>
-                        </div>
-                    </section>
-                    <HR></HR>
                     {/* ----------------------- Roadmap section --------------------------- */}
                     <section id="cta" style={{
                         textAlign: 'center',
@@ -171,24 +82,103 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                         alignItems: "center",
                         justifyContent: "center",
                     }}>
-                        <H2>Roadmap</H2>
+                        <H2>Vision & Roadmap</H2>
+                        <H3>Vision</H3>
                         <P>
+                            Our goal is to build a platform that hosts a variety of tools for motion design professionals.
+                            <br></br>
+                            <br></br>
+                            We want to work together with independent developers to bring this vision to life in a mutually beneficial way.
+                            <br></br>
+                            <br></br>
+                            We understand our role as providing a platform and building infrastructure that allows developers to create tools that are easy to use and distribute.
+                            Amongst other things, we aspire to offer developers the following affordances to more easily build creative tools:
+                            <br></br>
+                            <br></br>
+                            <ul>
+                                <li>
+                                    <b>Timeline editor:</b><br></br>
+                                    A clean, generic UI for keyframing animation
+                                </li>
+                                <br></br>
+                                <li>
+                                    <b>Multi-format export API:</b><br></br>
+                                    Let users export images and videos with ease
+                                </li>
+                                <br></br>
+                                <li>
+                                    <b>UI component library:</b><br></br>
+                                    Plug-and-play sliders, color pickers, and more
+                                </li>
+                                <br></br>
+                                <li>
+                                    <b>Cross-tool workflows:</b><br></br>
+                                    Make your tool part of a bigger pipeline—connect it to inputs and outputs from other tools, including ones built by others
+                                </li>
+                                <br></br>
+                                <li>
+                                    <b>Built-in distribution:</b><br></br>
+                                    Let users discover and use your tool directly on the platform
+                                </li>
+                                <br></br>
+                                <li>
+                                    <b>AI access layer:</b><br></br>
+                                    Integrate powerful generative features without the boilerplate
+                                </li>
+                                <br></br>
+                                <li>
+                                    <b>Tool analytics:</b><br></br>
+                                    Understand how your tool is used and improve it over time
+                                </li>
+                                <br></br>
+                                <li>
+                                    <b>Monetization (optional):</b><br></br>
+                                    Built-in payments if you want to charge for your tool
+                                </li>
+                            </ul>
 
-                            What we're working on now,
-                            <br></br>
-                            and what we plan to do next.
-                            <br></br>
-                            <br></br>
-                            {"{ under construction }"}
+
                         </P>
+
+                        <br></br>
+                        <H3>Roadmap</H3>
+                        <P>
+                            In the first phase, we are focusing on sketching out the UX of our platform and building a few simple tools
+                            to be able to provide a working, end-to-end demonstration of our vision.<br></br><br></br>
+                            On the engineering side, we are iterating on our plugin architecture,
+                            and developing the affordances we want to offer developers to build their tools.
+                            <br></br><br></br>
+                            Once our initial platform is up and running and has been tested in production,
+                            we hope to open up our platform to a small group of developers to start building their own tools.
+                            In this phase, we want to work closely with developers to understand their needs and pain points,
+                            and iterate on our platform to better serve them.
+                            <br></br><br></br>
+                            In the long run, we want to open up our platform to a wider audience of developers and users,
+                            and build a vibrant ecosystem of tools and plugins that can be used by anyone.
+
+
+
+
+
+                        </P>
+
                         <br></br>
 
-                        <div style={{ display: isMobile ? "flex" : "none", flexDirection: "row", gap: "15px" }}>
+                        <H3>Get in touch</H3>
+                        <P>
+                            Are you building creative tools?
+                            We'd love to hear how we can make your life easier.
+                            Help us shape a platform that truly supports developers like you.
+                            <br></br><br></br>
+                            <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+                                <GetInTouchButton />
+                            </div>
 
-                            <a href={resourcesUrl} style={{ color: "var(--gray7)", marginTop: "15px" }}>Resources</a>
-                            <a href={aboutUrl} style={{ color: "var(--gray7)", marginTop: "15px" }}>About</a>
-                        </div>
+                        </P>
                     </section>
+                    <br></br>
+
+
                     <HR></HR>
                     {/* -----------------------  Call to action --------------------------- */}
                     <section id="cta" style={{
@@ -210,11 +200,6 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                         <Button text="Get updates" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
                             onClick={openSubscriptionForm}
                         ></Button>
-                        <div style={{ display: isMobile ? "flex" : "none", flexDirection: "row", gap: "15px" }}>
-
-                            <a href={resourcesUrl} style={{ color: "var(--gray7)", marginTop: "15px" }}>Resources</a>
-                            <a href={aboutUrl} style={{ color: "var(--gray7)", marginTop: "15px" }}>About</a>
-                        </div>
                     </section>
                     <HR></HR>
                     {/* -----------------------  Footer --------------------------- */}
@@ -242,5 +227,19 @@ const PinsAndCurvesLandingPage: React.FC = () => {
         </div>
     );
 };
+
+function GetInTouchButton() {
+    const [clicked, setClicked] = React.useState(false);
+
+    return (
+        <>
+            <Button text="Get in touch" iconName='sms'
+                onClick={() => setClicked(true)}
+            ></Button>
+            {clicked && <P><br></br>Please write an email to mtrifonov.design@gmail.com</P>}
+        </>
+
+    );
+}
 
 export default PinsAndCurvesLandingPage;
