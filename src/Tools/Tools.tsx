@@ -252,10 +252,7 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                             alt="Spaghetti tool preview"
                             title="cyber spaghetti"
                             description={<><span>create warp speed animations</span><br /><br /></>}
-                            buttonText="Temporarily unavailable"
-                            buttonIcon='block'
-                            buttonBgColor='var(--gray3)'
-                            buttonHoverBgColor='var(--gray4)'
+                            buttonText="Run"
                             buttonUrl="https://run.pinsandcurves.app/?template=cyberspaghetti"
                             isMobile={isMobile}
                         />
