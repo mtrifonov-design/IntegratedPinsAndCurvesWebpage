@@ -87,7 +87,6 @@ const ToolBox: React.FC<ToolBoxProps> = ({
                 hoverColor={buttonHoverColor}
                 onClick={() => window.open(buttonUrl, "_blank")}
             />}
-
         </div>
     );
 }
