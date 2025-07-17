@@ -246,7 +246,7 @@ function GetInTouchButton() {
             <Button text="Get in touch" iconName='sms'
                 onClick={() => setClicked(true)}
             ></Button>
-            {clicked && <P><br></br>Please write an email to mtrifonov.design@gmail.com</P>}
+            {clicked && <P><br></br>Please write an email to martin@pinsandcurves.app</P>}
         </>
 
     );
