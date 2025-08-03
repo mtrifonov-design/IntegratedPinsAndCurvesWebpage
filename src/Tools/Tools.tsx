@@ -3,7 +3,7 @@ import { Button } from '@mtrifonov-design/pinsandcurves-specialuicomponents';
 import { useNavigate } from 'react-router';
 import NavigationBar from '../NavigationBar/NavigationBar';
 
-import { P, H2, HR, H1 } from './GenericStyleComponents';
+import { P, H2, HR, H1, H3 } from './GenericStyleComponents';
 
 const openSubscriptionForm = () => {
     window.open("http://eepurl.com/i6WBsQ", "_blank");
@@ -24,6 +24,8 @@ interface ToolBoxProps {
     buttonHoverBgColor?: string;
     buttonHoverColor?: string;
     isMobile?: boolean;
+    badgeText?: string;
+    showBadge?: boolean;
 }
 
 const ToolBox: React.FC<ToolBoxProps> = ({
@@ -40,53 +42,91 @@ const ToolBox: React.FC<ToolBoxProps> = ({
     buttonHoverBgColor = 'var(--green2)',
     buttonHoverColor = 'var(--gray8)',
     isMobile,
+    badgeText = "NEW",
+    showBadge = false,
 }) => {
     const [hovered, setHovered] = React.useState(false);
     return (
         <div
             style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "min(500px, calc(100vw - 40px))",
+                display: "grid",
+                gridTemplateColumns: "1fr",
+                gridTemplateRows: "auto 1fr",
+                width: "min(350px, calc(100vw - 40px))",
                 margin: "10px",
-                alignItems: "center",
-                justifyContent: "center",
-                border: hovered ? "2px solid var(--gray4)" : "2px solid var(--gray2)",
-                paddingTop: "40px",
-                paddingBottom: "40px",
-                paddingLeft: "20px",
-                paddingRight: "20px",
+
+                border: hovered ? "2px solid var(--gray6)" : "2px solid var(--gray2)",
                 borderRadius: "var(--borderRadiusSmall)",
-                overflow: "hidden",
+                //overflow: "hidden",
+                padding: "5px",
                 // boxShadow: hovered ? "0 0 25px 6px var(--green1)" : undefined,
                 // transition: "box-shadow 0.25s"
             }}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
+
             <ToolPreview
                 stillSrc={stillSrc}
                 videoSrc={videoSrc}
                 alt={alt}
                 forceHover={hovered}
             />
-            <H2>{title}</H2>
-            <P>{description}</P>
-            {isMobile ? 
-            <Button
-                text={"Not available on mobile"}
-                iconName={"block"}
-                onClick={() => {}}
-            />
-            : <Button
-                text={buttonText}
-                iconName={buttonIcon}
-                bgColor={buttonBgColor}
-                color={buttonColor}
-                hoverBgColor={buttonHoverBgColor}
-                hoverColor={buttonHoverColor}
-                onClick={() => window.open(buttonUrl, "_blank")}
-            />}
+            <div style={{
+                padding: "20px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "10px",
+                width: "100%",
+            }}>
+                <div>
+                    <div style={{
+                        marginBottom: '10px',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}>
+                        <div style={{
+                            fontSize: '1.5em',
+                            fontWeight: 'bold',
+                        }}>{title}</div>
+                        {showBadge &&
+                            <div style={{
+                                backgroundColor: "var(--danger)",
+                                fontSize: "0.5em",
+                                padding: "2px 5px",
+                                fontWeight: "bold",
+                                marginLeft: "8px",
+                                color: "var(--gray1)",
+                                textTransform: "uppercase",
+                                borderRadius: "var(--borderRadiusSmall)",
+                            }}>{badgeText}</div>
+                        }
+                    </div>
+                    <div style={{
+                        fontSize: '1em',
+                        color: 'var(--gray5)',
+                    }}>{description}</div>
+                </div>
+                {isMobile ?
+                    <Button
+                        text={"Not available on mobile"}
+                        iconName={"block"}
+                        onClick={() => { }}
+                    />
+                    : <Button
+                        text={buttonText}
+                        iconName={buttonIcon}
+                        bgColor={buttonBgColor}
+                        color={buttonColor}
+                        hoverBgColor={buttonHoverBgColor}
+                        hoverColor={buttonHoverColor}
+                        onClick={() => window.open(buttonUrl, "_blank")}
+                    />}
+            </div>
         </div>
     );
 }
@@ -133,7 +173,7 @@ function ToolPreview({ stillSrc, videoSrc, alt, forceHover }: { stillSrc: string
                 width: "100%",
                 aspectRatio: "16/9",
                 position: "relative",
-                borderRadius: "var(--borderRadiusSmall)",
+                //borderRadius: "var(--borderRadiusSmall)",
                 overflow: "hidden",
                 background: "#222"
             }}
@@ -182,11 +222,11 @@ function ToolPreview({ stillSrc, videoSrc, alt, forceHover }: { stillSrc: string
 const PinsAndCurvesLandingPage: React.FC = () => {
     const navigate = useNavigate();
     const isMobile = window.innerWidth < 768;
-    
+
     useEffect(() => {
         if ((window as any).goatcounter) {
             (window as any).goatcounter.count({
-                path:  "HOMEPAGE-TOOLS",
+                path: "HOMEPAGE-TOOLS",
                 event: true,
             })
         }
@@ -219,45 +259,49 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                 }}>
                     {/* -----------------------  Hero Section --------------------------- */}
                     <header id="hero" style={{
-                        textAlign: 'center', padding: '50px 20px',
+                        textAlign: 'center', padding: '20px 20px',
+                        marginTop: isMobile ? "15px" : "75px",
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
                         justifyContent: "flex-start",
-                        gap: "20px",
+                        //gap: "20px",
 
                     }}>
                         <div>
                             <H1>
-                                ✨ Tools for motion designers ✨
+                                Tools for motion designers
                             </H1>
+                            <hr></hr>
                         </div>
 
                     </header>
 
                     <section id="cta" style={{
                         textAlign: 'center',
-                        padding: '50px 20px',
+                        padding: '20px 20px',
                         display: "flex",
                         flexDirection: "row",
                         flexWrap: "wrap",
                         gap: "20px",
-                        alignItems: "center",
+                        alignContent: "stretch",
                         justifyContent: "center",
                     }}>
                         <ToolBox
-                            stillSrc="/media/toolpreviews/spaghetti_still.jpg"
-                            videoSrc="/media/toolpreviews/spaghetti_video.mp4"
-                            alt="Spaghetti tool preview"
-                            title="cyber spaghetti"
-                            description={<><span>create warp speed animations</span><br /><br /></>}
+                            stillSrc="/media/toolpreviews/echoknightstill_p.webp"
+                            videoSrc="/media/toolpreviews/echoknightpreview_c.mp4"
+                            alt="Lissajous tool preview"
+                            title="echo knight"
+                            description={<><span>turn your images into hypnotic ripple tunnels</span><br /><br /></>}
                             buttonText="Run"
-                            buttonUrl="https://run.pinsandcurves.app/?template=cyberspaghetti"
+                            buttonUrl="https://run.pinsandcurves.app/?template=echoknight"
                             isMobile={isMobile}
+                            showBadge={true}
+                            badgeText="NEW"
                         />
                         <ToolBox
-                            stillSrc="/media/toolpreviews/lissajous_still.jpg"
-                            videoSrc="/media/toolpreviews/lissajous_video.mp4"
+                            stillSrc="/media/toolpreviews/liquidlissajousstill_p.webp"
+                            videoSrc="/media/toolpreviews/liquidlissajouspreview_c.mp4"
                             alt="Lissajous tool preview"
                             title="liquid lissajous"
                             description={<><span>create beautiful animated gradients</span><br /><br /></>}
@@ -265,28 +309,54 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                             buttonUrl="https://run.pinsandcurves.app/?template=liquidlissajous"
                             isMobile={isMobile}
                         />
+                        <ToolBox
+                            stillSrc="/media/toolpreviews/cybspagstill_p.webp"
+                            videoSrc="/media/toolpreviews/cybspagpreview_c.mp4"
+                            alt="Spaghetti tool preview"
+                            title="cyber spaghetti"
+                            description={<><span>create warp speed animations</span><br /><br /></>}
+                            buttonText="Run"
+                            buttonUrl="https://run.pinsandcurves.app/?template=cyberspaghetti"
+                            isMobile={isMobile}
+                        />
+
                     </section>
                     <section id="cta" style={{
                         textAlign: 'center',
-                        maxWidth: "100vw",
-                        padding: '50px 40px',
+                        width: "100%",
+                        padding: '20px 40px',
                         display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
+                        flexDirection: "row",
+                        gap: "20px",
+                        alignItems: "flex-start",
                         justifyContent: "center",
+
                     }}>
-                    <H2>... more tools are coming soon 🕙</H2>
-                                            <P>
-                            Sign up to our newsletter to get updates when new tools are released.
-                        </P>
+                        <div style={{
+                            width: "min(350px, calc(100vw - 40px))",
+                            // border: "2px solid var(--gray3)",
+                            // borderRadius: "var(--borderRadiusSmall)",
+                            // backgroundColor: "var(--gray1)",
+                            padding: "20px",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                        }}>
+                            <H3 style={{
+                                color: 'var(--gray8)'
+                            }}>More tools are coming soon.</H3>
+                            <P style={{
+                                color: 'var(--gray6)'
+                            }}>
+                                Sign up to our newsletter to get updates when new tools are released.
+                            </P>
+                            <br></br>
+                            <Button text="Get updates" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
+                                onClick={openSubscriptionForm}
+                            ></Button>
+                        </div>
                         <br></br>
-                        <Button text="Get updates" iconName='mail' bgColor='var(--yellow3)' color='var(--gray1)'
-                            onClick={openSubscriptionForm}
-                        ></Button>
-
-
-
-                    <br></br>
                     </section>
                     <HR></HR>
                     {/* ----------------------- Roadmap section --------------------------- */}
@@ -299,15 +369,23 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                         alignItems: "center",
                         justifyContent: "center",
                     }}>
-                    <H2>help us make tools 🔧</H2>
-                    <P>
-                        Do you have an idea for a tool that would make your life easier as a motion designer?
-                        Or if you're technically minded, do you want to develop a tool together with us? 
-                    </P>
-                    <br></br>
-                        <GetInTouchButton></GetInTouchButton>
+                        <H2>Say hi!</H2>
+                        <P style={{
+                            maxWidth: "500px",
+                            color: 'var(--gray6)',
+                        }}>
+                            You have an idea for a tool that would make your life easier?
+                            Or just want to say hi?
+                            Reach out to <strong style={{ color: "white" }}>martin@pinsandcurves.app</strong> or
+                            message us on <a href="https://www.instagram.com/pinsandcurves/"
+                                target="_blank" rel="noopener noreferrer"
+                                style={{ color: "var(--continuousBlue3)", textDecoration: "underline" }}
+                            >instagram</a>, we'd love to hear from you!
+
+                        </P>
+                        <br></br>
                     </section>
-                    
+
                     <HR></HR>
                     {/* -----------------------  Footer --------------------------- */}
                     <section id="end" style={{
@@ -335,18 +413,18 @@ const PinsAndCurvesLandingPage: React.FC = () => {
 };
 
 
-function GetInTouchButton() {
-    const [clicked, setClicked] = React.useState(false);
+// function GetInTouchButton() {
+//     const [clicked, setClicked] = React.useState(false);
 
-    return (
-        <>
-        <Button text="Get in touch" iconName='sms' 
-            onClick={() => setClicked(true)}
-        ></Button>
-        {clicked && <P><br></br>Please write an email to martin@pinsandcurves.app</P>}
-        </>
+//     return (
+//         <>
+//             <Button text="Get in touch" iconName='sms'
+//                 onClick={() => setClicked(true)}
+//             ></Button>
+//             {clicked && <P><br></br>Please write an email to martin@pinsandcurves.app</P>}
+//         </>
 
-    );
-}
+//     );
+// }
 
 export default PinsAndCurvesLandingPage;
