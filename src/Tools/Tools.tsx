@@ -230,6 +230,9 @@ const PinsAndCurvesLandingPage: React.FC = () => {
                 event: true,
             })
         }
+        if ((window as any).op) {
+            (window as any).op('track', 'homepage-tools')
+        }
     }, []);
 
     return (
