@@ -96,7 +96,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                 borderRadius: 'var(--borderRadiusSmall)',
                 minWidth: 0,
                 overflow: 'hidden',
-                backgroundColor: 'lightgray',
+                backgroundColor: 'var(--gray2)',
               }} key={index}>
                 <Image
                   src={index}
