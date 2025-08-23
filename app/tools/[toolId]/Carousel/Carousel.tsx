@@ -34,6 +34,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       const handleResize = () => {
           setIsMobile(window.innerWidth <= 768);
       };
+      handleResize(); // Set initial state
       window.addEventListener('resize', handleResize);
       return () => {
           window.removeEventListener('resize', handleResize);
