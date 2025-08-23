@@ -95,7 +95,7 @@ export default function RootLayout({
       <body style={{
         backgroundColor: "black",
         color: "var(--gray6)",
-        height: "100dvh",
+        height: "100vh",
         overflow: "scroll",
       }}>
         <NavBar />
