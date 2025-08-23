@@ -7,7 +7,7 @@ export default function NavBar() {
     <header style={{
         display: "flex",
         justifyContent: "space-between",
-        position: "fixed",
+        position: "sticky",
         top: "0",
         left: "0",
         width: "100vw",
