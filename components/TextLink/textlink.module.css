@@ -1,0 +1,8 @@
+.textLink {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.textLink:hover {
+  color: white;
+}
