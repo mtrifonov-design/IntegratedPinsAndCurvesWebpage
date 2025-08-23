@@ -106,6 +106,7 @@ export default function RootLayout({
         width: "100vw",
         margin: "0",
         overflowY: "scroll",
+        scrollbarColor: "var(--gray3) black",
       }}>
         <NavBar />
         {children}
