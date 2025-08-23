@@ -94,6 +94,7 @@ export default function RootLayout({
     <html lang="en"
       style={{
         height: "100%",
+        width: "100vw",
         overflow: "hidden",
         overscrollBehavior: "none",
       }}
@@ -102,7 +103,9 @@ export default function RootLayout({
         backgroundColor: "black",
         color: "var(--gray6)",
         height: "100dvh",
-        overflow: "scroll",
+        width: "100vw",
+        margin: "0",
+        overflowY: "scroll",
       }}>
         <NavBar />
         {children}
