@@ -91,11 +91,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en"
+      style={{
+        height: "100%",
+        overflow: "hidden",
+        overscrollBehavior: "none",
+      }}
+    >
       <body style={{
         backgroundColor: "black",
         color: "var(--gray6)",
-        height: "100vh",
+        height: "100%",
         overflow: "scroll",
       }}>
         <NavBar />
