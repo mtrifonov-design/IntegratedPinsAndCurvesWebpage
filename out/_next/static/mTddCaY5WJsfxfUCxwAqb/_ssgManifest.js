@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Ftools\u002F[toolId]","\u002Ftools\u002F[toolId]\u002Fopengraph-image.png"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
