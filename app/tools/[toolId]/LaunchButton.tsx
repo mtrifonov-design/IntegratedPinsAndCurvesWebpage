@@ -31,9 +31,31 @@ export default function LaunchButton({ launchUrl }: { launchUrl: string }) {
             onClick={() => window.open(launchUrl, "_blank")}
         />
         :
-        <Button
-            text={"Not available on mobile"}
-            iconName={"block"}
-        />
+        // <Button
+        //     text={"Not available on mobile"}
+        //     iconName={"block"}
+        //     style={{
+        //         height: "auto",
+        //         paddingTop: "4px",
+        //         paddingBottom: "4px",
+        //     }}
+        // />
+        <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '10px',
+
+            color: 'var(--gray7)',
+            padding: '8px',
+            paddingLeft: '12px',
+            paddingRight: '12px',
+            border: '1px solid var(--gray6)',
+            borderRadius: 'var(--borderRadiusSmall)',
+            userSelect: 'none',
+        }}>
+        <span className="materialSymbols">block</span>
+            Not available on mobile
+        </div>
     );
 }

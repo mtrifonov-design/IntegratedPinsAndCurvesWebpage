@@ -28,8 +28,8 @@ export default function AboutPage() {
       }}>
         <h3 style={{ color: "var(--yellow2)" }}>Our mission</h3>
         <h1 style={{ textAlign: "center", color: "var(--yellow1)", lineHeight: "1.5", maxWidth: "800px" }}>
-          We want to make it <span style={{color:"var(--yellow1)"}}>very easy</span> <br></br>
-          for <span style={{color:"var(--yellow1)"}}>creative coders</span> to build tools for <span style={{color:"var(--yellow1)"}}>motion designers</span>.</h1>
+          We want to make it very easy <br></br>
+          for creative coders to build tools for motion designers.</h1>
 
         <br></br><br></br><br></br>
         <h3 style={{ color: "var(--yellow2)" }}>Who we are</h3>
@@ -56,7 +56,7 @@ export default function AboutPage() {
 
         <br></br><br></br><br></br>
         <h3 style={{ color: "var(--yellow2)" }}>Get in touch</h3>
-        <div>                    Reach out to <strong style={{ color: "var(--yellow1)" }}>martin@pinsandcurves.app</strong> or
+        <div style={{}}>                    Reach out to <strong style={{ color: "var(--yellow1)" }}>martin@pinsandcurves.app</strong> or
           message us on <a href="https://www.instagram.com/pinsandcurves/"
             target="_blank" rel="noopener noreferrer"
             style={{ color: "var(--continuousBlue3)", textDecoration: "underline" }}

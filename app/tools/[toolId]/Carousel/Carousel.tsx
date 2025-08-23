@@ -1,5 +1,5 @@
 "use client";
-import React from 'react'
+import React, { useEffect } from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import {  useDotButton } from './EmblaCarouselDotButton'
 import {
@@ -29,6 +29,16 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     onNextButtonClick
   } = usePrevNextButtons(emblaApi)
 
+  const [isMobile, setIsMobile] = React.useState(false);
+  useEffect(() => {
+      const handleResize = () => {
+          setIsMobile(window.innerWidth <= 768);
+      };
+      window.addEventListener('resize', handleResize);
+      return () => {
+          window.removeEventListener('resize', handleResize);
+      };
+  }, [])
 
   const leftNeedsShadow = !prevBtnDisabled;
   const rightNeedsShadow = !nextBtnDisabled;
@@ -79,9 +89,9 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
           }}>
             {slides.map((index) => (
               <div style={{
-                width: "600px",
-                height: "400px",
-                flex: "0 0 600px",
+                width: isMobile ? '300px' : '600px',
+                height: isMobile ? '200px' : '400px',
+                flex: `0 0 ${isMobile ? '300px' : '600px'}`,
                 borderRadius: 'var(--borderRadiusSmall)',
                 minWidth: 0,
                 overflow: 'hidden',
@@ -90,8 +100,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                 <Image
                   src={index}
                   alt={`Slide ${index}`}
-                  width={600}
-                  height={400}
+                  width={isMobile ? 300 : 600}
+                  height={isMobile ? 200 : 400}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+
+                  }}
                 />
               </div>
             ))}

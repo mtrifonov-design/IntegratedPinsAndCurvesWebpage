@@ -78,6 +78,8 @@ export default async function ToolPage(p: { params: { toolId: string } }) {
                         flexDirection: 'row',
                         alignItems: 'center',
                         justifyContent: 'space-between',
+                        gap: '20px',
+                        flexWrap: 'wrap',
                         width: '100%',
                     }}>
                         <h1>{toolName}</h1>

@@ -9,7 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@mtrifonov-design/pinsandcurves-design": "^0.0.35",
+    "@mtrifonov-design/pinsandcurves-design": "^0.0.36",
     "embla-carousel-react": "^8.6.0",
     "next": "15.5.0",
     "react": "19.1.0",

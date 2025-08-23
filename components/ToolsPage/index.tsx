@@ -25,7 +25,7 @@ export default function ToolsPage() {
                 gap: "60px",
                 marginTop: "75px",
             }}>
-                <div>
+                <div style={{padding: "10px"}}>
                     <h1 style={{textAlign: "center"}}>Tools for motion designers</h1>
                 </div>
                 <div style={{
