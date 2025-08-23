@@ -10,7 +10,7 @@ export default function AboutPage() {
       width: "100vw",
       display: "flex",
       justifyContent: "center",
-      minHeight: "100vh",
+      minHeight: "100dvh",
     }}>
       <div style={{
         maxWidth: "800px",

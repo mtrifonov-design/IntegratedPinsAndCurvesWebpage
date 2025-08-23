@@ -39,7 +39,7 @@ export default function NavArea() {
         top: "0",
         left: "0",
         width: "100vw",
-        height: "100vh",
+        height: "100dvh",
         backgroundColor: "black",
         zIndex: 99,
         //paddingTop: "100px",

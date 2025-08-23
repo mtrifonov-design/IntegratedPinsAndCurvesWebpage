@@ -56,7 +56,7 @@ export default async function ToolPage(p: { params: { toolId: string } }) {
             paddingLeft: '40px',
             paddingRight: '40px',
             paddingTop: '40px',
-            minHeight: '100vh',
+            minHeight: '100dvh',
             display: 'flex',
             justifyContent: 'center',
         }}>
